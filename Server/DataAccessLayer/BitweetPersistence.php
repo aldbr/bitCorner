@@ -6,7 +6,11 @@
 class BitweetPersistence {
 
   public function createBitweet($bitweet) {
-
+    $query = "CREATE (bitweet:Bitweet {";
+    $query .= "message:'". $bitweet->getMessage() ."',";
+    $query .= "nbVotes:'". $bitweet->getNbVotes() ."'";
+    $query .= "})";
+    $result = Persistence::run($query);
   }
 
   public function getBitweet($id) {
@@ -14,14 +18,6 @@ class BitweetPersistence {
   }
 
   public function getBitweets($idUser) {
-
-  }
-
-  public function getBitweets($idChannel) {
-
-  }
-
-  public function getBitweets() {
 
   }
 

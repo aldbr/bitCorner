@@ -11,7 +11,7 @@ class BitweetDTO {
   private $comments;
 
   public function __construct($message, $nbVotes, $comments) {
-    $this->message = $message
+    $this->message = $message;
     $this->nbVotes = $nbVotes;
     $this->comments = $comments;
   }

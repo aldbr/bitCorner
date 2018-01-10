@@ -6,5 +6,6 @@ require_once(__DIR__ . '/Config/Config.php');
 require_once(__DIR__ . '/Config/Autoload.php');
 Autoload::load();
 
-include (__DIR__ . '\\..\\Client\\ConnectionModule\\Controller\\UserController.php');
+include (__DIR__ . '/../Client/ConnectionModule/Controller/UserController.php');
+include (__DIR__ . '/../Client/ConnectionModule/Controller/BitweetController.php');
 ?>

@@ -1,19 +1,20 @@
 <?php
 
 /**
- * Bitweet class: represents a post typeset by a user
+ * Bitweet class on the client side
  */
-class BitweetEntity {
+class BitweetModel {
 
   private $message;
-  private $nbVotes;
 
+  private $nbVotes;
   private $comments;
 
-  public function __construct($message, $nbVotes, $comments) {
+  public function __construct($message) {
     self::setMessage($message);
-    self::setNbVotes($nbVotes);
-    self::setComments($comments);
+
+    self::setNbVotes(0);
+    self::setComments(array());
   }
 
   public function getMessage() {

@@ -10,7 +10,7 @@ require_once __DIR__."/../index.php";
 class UserPersistenceTest extends TestCase {
 
   public function testCreateUser() {
-    $user = new UserEntity("toto", "1234", "toto@yopmail.com");
+    $user = new UserEntity("toto", "1234", "toto@yopmail.com", 0, 0, array());
     $UserPersistence = new UserPersistence();
     $UserPersistence->createUser($user);
   }
