@@ -5,13 +5,12 @@
  */
 class UserModel {
 
+  private $id;
   private $username;
   private $password;
   private $mail;
-
   private $nbFollowers;
   private $nbFollowing;
-
   private $bitweets;
 
   public function __construct($username, $password, $mail) {
@@ -19,10 +18,19 @@ class UserModel {
     self::setPassword($password);
     self::setMail($mail);
 
+    self::setId(-1);
     self::setNbFollowers(0);
     self::setNbFollowing(0);
 
     self::setBitweets(array());
+  }
+
+  public function getId() {
+    return $this->id;
+  }
+
+  public function setId($id) {
+    $this->id = $id;
   }
 
   public function getUsername() {

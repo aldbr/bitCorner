@@ -7,6 +7,7 @@ class UserServerFactory {
 
   public static function DTOToEntity($dto) {
   	return new UserEntity(
+      $dto->getId(),
   		$dto->getUsername(),
   		$dto->getPassword(),
   		$dto->getMail(),
@@ -18,6 +19,7 @@ class UserServerFactory {
 
   public static function EntityToDTO($entity) {
   	return new UserDTO(
+      $entity->getId(),
   		$entity->getUsername(),
   		$entity->getPassword(),
   		$entity->getMail(),

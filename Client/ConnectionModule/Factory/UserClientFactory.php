@@ -6,18 +6,19 @@
 class UserClientFactory {
 
   public static function DTOToModel($dto) {
-  	return new UserModel(
-  		$dto->getUsername(),
-  		$dto->getPassword(),
-  		$dto->getMail(),
-  		$dto->getNbFollowers(),
-  		$dto->getNbFollowing(),
-  		$dto->getBitweets()
-  	);
+  	$userModel = new UserModel($dto->getUsername(), $dto->getPassword(), $dto->getMail());
+    
+    $userModel->setId($dto->getId());
+    $userModel->setNbFollowers($dto->getNbFollowers());
+    $userModel->setNbFollowing($dto->getNbFollowing());
+    $userModel->setBitweets($dto->getBitweets());
+
+    return $userModel;
   }
 
   public static function ModelToDTO($model) {
   	return new UserDTO(
+      $model->getId(),
   		$model->getUsername(),
   		$model->getPassword(),
   		$model->getMail(),

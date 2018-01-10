@@ -5,16 +5,16 @@
  */
 class UserEntity {
 
+  private $id;
   private $username;
   private $password;
   private $mail;
-
   private $nbFollowers;
   private $nbFollowing;
-
   private $bitweets;
 
-  public function __construct($username, $password, $mail, $nbFollowers, $nbFollowing, $bitweets) {
+  public function __construct($id, $username, $password, $mail, $nbFollowers, $nbFollowing, $bitweets) {
+    self::setId($id);
     self::setUsername($username);
     self::setPassword($password);
     self::setMail($mail);
@@ -23,6 +23,14 @@ class UserEntity {
     self::setBitweets($bitweets);
   }
 
+  public function getId() {
+    return $this->id;
+  }
+
+  public function setId($id) {
+    $this->id = $id;
+  }
+  
   public function getUsername() {
     return $this->username;
   }
