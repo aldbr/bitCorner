@@ -14,15 +14,13 @@ class UserEntity {
 
   private $bitweets;
 
-  public function __construct($username, $password, $mail) {
+  public function __construct($username, $password, $mail, $nbFollowers, $nbFollowing, $bitweets) {
     self::setUsername($username);
     self::setPassword($password);
     self::setMail($mail);
-
-    $this->nbFollowers = 0;
-    $this->nbFollowing = 0;
-
-    $this->bitweets = array();
+    self::setNbFollowers($nbFollowers);
+    self::setNbFollowing($nbFollowing);
+    self::setBitweets($bitweets);
   }
 
   public function getUsername() {
@@ -53,6 +51,10 @@ class UserEntity {
     return $this->nbFollowers;
   }
 
+  public function setNbFollowers($nbFollowers) {
+    $this->nbFollowers = $nbFollowers;
+  }
+  
   public function incrementNbFollowers() {
     $this->nbFollowers += 1;
   }
@@ -66,6 +68,10 @@ class UserEntity {
     return $this->nbFollowing;
   }
 
+  public function setNbFollowing($nbFollowing) {
+    $this->nbFollowing = $nbFollowing;
+  }
+
   public function incrementNbFollowing() {
     $this->nbFollowing += 1;
   }
@@ -77,6 +83,10 @@ class UserEntity {
 
   public function getBitweets() {
     return $this->bitweets;
+  }
+
+  public function setBitweets($bitweets) {
+    $this->bitweets = $bitweets;
   }
 
   public function addBitweet($bitweet) {
