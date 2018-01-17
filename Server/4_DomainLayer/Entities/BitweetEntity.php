@@ -5,16 +5,21 @@
  */
 class BitweetEntity {
 
+  private $id;
   private $message;
   private $nbVotes;
-
   private $comments;
 
-  public function __construct($id, $message, $nbVotes, $comments) {
+  private $idUser;
+  private $idChannel;
+
+  public function __construct($id, $message, $nbVotes, $comments, $idUser, $idChannel) {
     self::setId($id);
     self::setMessage($message);
     self::setNbVotes($nbVotes);
     self::setComments($comments);
+    self::setIdUser($idUser);
+    self::setIdChannel($idChannel);
   }
 
   public function getId() {
@@ -63,6 +68,22 @@ class BitweetEntity {
 
   public function removeComment($index) {
     unset($this->comments[$index]);
+  }
+
+  public function getIdUser() {
+    return $this->idUser;
+  }
+
+  public function setIdUser($idUser) {
+    $this->idUser = $idUser;
+  }
+
+  public function getIdChannel() {
+    return $this->idChannel;
+  }
+
+  public function setIdChannel($idChannel) {
+    $this->idChannel = $idChannel;
   }
 }
 

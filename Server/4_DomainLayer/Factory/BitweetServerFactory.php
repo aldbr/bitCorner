@@ -10,7 +10,9 @@ class BitweetServerFactory {
       $dto->getId(),
       $dto->getMessage(),
       $dto->getNbVotes(),
-      $dto->getComments()
+      $dto->getComments(),
+      $dto->getIdUser(),
+      $dto->getIdChannel()
   	);
   }
 
@@ -19,7 +21,9 @@ class BitweetServerFactory {
       $entity->getId(),
       $entity->getMessage(),
       $entity->getNbVotes(),
-      $entity->getComments()
+      $entity->getComments(),
+      $entity->getIdUser(),
+      $entity->getIdChannel()
   	);
   }
 }

@@ -6,7 +6,7 @@
 class BitweetClientFactory {
 
   public static function DTOToModel($dto) {
-    $bitweetModel = new BitweetModel($dto->getMessage());
+    $bitweetModel = new BitweetModel($dto->getMessage(), $dto->getIdUser(), $dto->getIdChannel());
 
     $bitweetModel->setId($dto->getId());
     $bitweetModel->setNbVotes($dto->getNbVotes());
@@ -19,7 +19,9 @@ class BitweetClientFactory {
       $model->getId(),
   		$model->getMessage(),
   		$model->getNbVotes(),
-  		$model->getComments()
+  		$model->getComments(),
+      $model->getIdUser(),
+      $model->getIdChannel()
   	);
   }
 }

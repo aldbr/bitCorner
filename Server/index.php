@@ -8,5 +8,6 @@ Autoload::load();
 
 // include (__DIR__ . '/../Client/ConnectionModule/2_Controller/UserController.php');
 // include (__DIR__ . '/../Client/ConnectionModule/2_Controller/BitweetController.php');
-include (__DIR__ . '/../Client/ConnectionModule/2_Controller/CommentController.php');
+//include (__DIR__ . '/../Client/ConnectionModule/2_Controller/CommentController.php');
+//include (__DIR__ . '/../Client/ConnectionModule/2_Controller/ChannelController.php');
 ?>

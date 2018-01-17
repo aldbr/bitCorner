@@ -33,6 +33,32 @@ class BitweetAppService {
 	}
 	return $bitweetDTOs;
   }
+
+  public function getBitweetsFromUser($idUser) {
+  	$bitweetPersistence = new BitweetPersistence();
+  	$bitweetEntities = $bitweetPersistence->getBitweetsFromUser($idUser);
+  	$bitweetDTOs = array();
+
+  	if(is_array($bitweetEntities)) {
+	  foreach($bitweetEntities as $bitweet) {
+	    array_push($bitweetDTOs, BitweetServerFactory::EntityToDTO($bitweet));
+	  }
+	}
+	return $bitweetDTOs;
+  }
+
+  public function getBitweetsFromChannel($idChannel) {
+  	$bitweetPersistence = new BitweetPersistence();
+  	$bitweetEntities = $bitweetPersistence->getBitweetsFromChannel($idChannel);
+  	$bitweetDTOs = array();
+
+  	if(is_array($bitweetEntities)) {
+	  foreach($bitweetEntities as $bitweet) {
+	    array_push($bitweetDTOs, BitweetServerFactory::EntityToDTO($bitweet));
+	  }
+	}
+	return $bitweetDTOs;
+  }
 }
 
 ?>

@@ -62,7 +62,7 @@ echo 'There are '.count($result).' users<br/>';
 
 if(is_array($result)) {
 	foreach($result as $user) {
-    var_dump($user);
+    echo '<pre>' . var_dump($user) . '</pre>';
 		//echo $user->getId().' - '.$user->getUsername().'<br/>';
 	}
 }
