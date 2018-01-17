@@ -28,7 +28,7 @@ class ChannelController {
 
     if(is_array($channelDTOs)) {
   	  foreach($channelDTOs as $channel) {
-  	    array_push($channelModels, channelClientFactory::DTOToModel($channel));
+  	    array_push($channelModels, ChannelClientFactory::DTOToModel($channel));
       }
     }
 
@@ -41,9 +41,9 @@ $channelControllerTest = new ChannelController();
 $channelModel1 = new ChannelModel("btc");
 $channelModel2 = new ChannelModel("eth");
 $channelModel3 = new ChannelModel("doge");
-$channelControllerTest->createChannel($channelModel1);
-$channelControllerTest->createChannel($channelModel2);
-$channelControllerTest->createChannel($channelModel3);
+//$channelControllerTest->createChannel($channelModel1);
+//$channelControllerTest->createChannel($channelModel2);
+//$channelControllerTest->createChannel($channelModel3);
 
 $result = $channelControllerTest->getChannels();
 echo 'There are '.count($result).' channels<br/>';
@@ -54,5 +54,4 @@ if(is_array($result)) {
 		//echo $user->getId().' - '.$user->getUsername().'<br/>';
 	}
 }
-
 ?>

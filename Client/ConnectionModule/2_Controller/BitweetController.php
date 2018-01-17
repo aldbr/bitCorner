@@ -17,13 +17,41 @@ class BitweetController {
 
   public function getBitweet($id) {
   	$bitweetClientService = new BitweetClientService();
-  	$bitweetDTO = $bitweetClientService->getbitweet($id);
+  	$bitweetDTO = $bitweetClientService->getBitweet($id);
     return BitweetClientFactory::DTOToModel($bitweetDTO);
   }
 
   public function getBitweets() {
   	$bitweetClientService = new BitweetClientService();
-  	$bitweetDTOs = $bitweetClientService->getbitweets();
+  	$bitweetDTOs = $bitweetClientService->getBitweets();
+  	$bitweetModels = array();
+
+    if(is_array($bitweetDTOs)) {
+  	  foreach($bitweetDTOs as $bitweet) {
+  	    array_push($bitweetModels, BitweetClientFactory::DTOToModel($bitweet));
+      }
+    }
+
+    return $bitweetModels;
+  }
+
+  public function getBitweetsFromUser($idUser) {
+    $bitweetClientService = new BitweetClientService();
+  	$bitweetDTOs = $bitweetClientService->getBitweetsFromUser($idUser);
+  	$bitweetModels = array();
+
+    if(is_array($bitweetDTOs)) {
+  	  foreach($bitweetDTOs as $bitweet) {
+  	    array_push($bitweetModels, BitweetClientFactory::DTOToModel($bitweet));
+      }
+    }
+
+    return $bitweetModels;
+  }
+
+  public function getBitweetsFromChannel($idChannel) {
+    $bitweetClientService = new BitweetClientService();
+  	$bitweetDTOs = $bitweetClientService->getBitweetsFromChannel($idChannel);
   	$bitweetModels = array();
 
     if(is_array($bitweetDTOs)) {
@@ -38,9 +66,9 @@ class BitweetController {
 
 //Simulate a call from a view
 $bitweetControllerTest = new BitweetController();
-$bitModel1 = new BitweetModel("bit1");
-$bitModel2 = new BitweetModel("bit2");
-$bitModel3 = new BitweetModel("bit3");
+$bitModel1 = new BitweetModel("bit1", 435, 437);
+$bitModel2 = new BitweetModel("bit2", 435, 437);
+$bitModel3 = new BitweetModel("bit3", 435, 437);
 //$bitweetControllerTest->createBitweet($bitModel1);
 //$bitweetControllerTest->createBitweet($bitModel2);
 //$bitweetControllerTest->createBitweet($bitModel3);
@@ -55,4 +83,12 @@ if(is_array($result)) {
 	}
 }
 
+//$result = $bitweetControllerTest->getBitweet(621);
+//echo '<pre>' . var_dump($result) . '</pre>';
+
+//$result = $bitweetControllerTest->getBitweetsFromUser(435);
+//echo '<pre>' . var_dump($result) . '</pre>';
+
+//$result = $bitweetControllerTest->getBitweetsFromChannel(543);
+//echo '<pre>' . var_dump($result) . '</pre>';
 ?>

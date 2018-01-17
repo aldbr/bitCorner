@@ -11,12 +11,17 @@ class BitweetModel {
   private $nbVotes;
   private $comments;
 
-  public function __construct($message) {
+  private $idUser;
+  private $idChannel;
+
+  public function __construct($message, $idUser, $idChannel) {
     self::setMessage($message);
 
     self::setId(-1);
     self::setNbVotes(0);
     self::setComments(array());
+    self::setIdUser($idUser);
+    self::setIdChannel($idChannel);
   }
 
   public function getId() {
@@ -66,6 +71,24 @@ class BitweetModel {
   public function removeComment($index) {
     unset($this->comments[$index]);
   }
+
+  public function getIdUser() {
+    return $this->idUser;
+  }
+
+  public function setIdUser($idUser) {
+    $this->idUser = $idUser;
+  }
+
+  public function getIdChannel() {
+    return $this->idChannel;
+  }
+
+  public function setIdChannel($idChannel) {
+    $this->idChannel = $idChannel;
+  }
+
+
 }
 
 ?>

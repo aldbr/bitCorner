@@ -23,6 +23,16 @@ class BitweetService {
   	$bitweetAppService = new BitweetAppService();
     return $bitweetAppService->getBitweets();
   }
+
+  public function getBitweetsFromUser($idUser) {
+  	$bitweetAppService = new BitweetAppService();
+    return $bitweetAppService->getBitweetsFromUser($idUser);
+  }
+
+  public function getBitweetsFromChannel($idChannel) {
+  	$bitweetAppService = new BitweetAppService();
+    return $bitweetAppService->getBitweetsFromChannel($idChannel);
+  }
 }
 
 ?>
