@@ -5,9 +5,23 @@
  */
 class BitweetClientService {
 
+  // -------------------- Setters --------------------------------
+
   public function createBitweet($bitweetDTO){
     $bitweetService = new BitweetService();
     $bitweetService->createBitweet($bitweetDTO);
+  }
+
+  // -------------------- Setters --------------------------------
+
+  public function getBitweet($id) {
+  	$bitweetService = new BitweetService();
+    return $bitweetService->getBitweet($id);
+  }
+
+  public function getBitweets() {
+  	$bitweetService = new BitweetService();
+    return $bitweetService->getBitweets();
   }
 }
 

@@ -13,8 +13,17 @@ class BitweetModel {
   public function __construct($message) {
     self::setMessage($message);
 
+    self::setId(-1);
     self::setNbVotes(0);
     self::setComments(array());
+  }
+
+  public function getId() {
+    return $this->id;
+  }
+
+  public function setId($id) {
+    $this->id = $id;
   }
 
   public function getMessage() {

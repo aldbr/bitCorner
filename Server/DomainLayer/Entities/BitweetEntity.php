@@ -10,10 +10,19 @@ class BitweetEntity {
 
   private $comments;
 
-  public function __construct($message, $nbVotes, $comments) {
+  public function __construct($id, $message, $nbVotes, $comments) {
+    self::setId($id);
     self::setMessage($message);
     self::setNbVotes($nbVotes);
     self::setComments($comments);
+  }
+
+  public function getId() {
+    return $this->id;
+  }
+
+  public function setId($id) {
+    $this->id = $id;
   }
 
   public function getMessage() {

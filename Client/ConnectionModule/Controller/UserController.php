@@ -19,7 +19,7 @@ class UserController {
   	$userClientService = new UserClientService();
   	$userDTO = $userClientService->getUser($id);
     return UserClientFactory::DTOToModel($userDTO);
-    
+
   }
 
   public function getUsers() {
@@ -28,9 +28,9 @@ class UserController {
   	$userModels = array();
 
     if(is_array($userDTOs)) {
-	  foreach($userDTOs as $user) {
-	    array_push($userModels, UserClientFactory::DTOToModel($user));
-	  }
+  	  foreach($userDTOs as $user) {
+  	    array_push($userModels, UserClientFactory::DTOToModel($user));
+  	  }
 	}
 
 	return $userModels;
@@ -49,7 +49,7 @@ $userModel3 = new UserModel("Username333","Password333","mail@lol.fr333");
 
 $result = $userControllerTest->getUsers();
 
-echo 'Il y a '.count($result).' utilisateurs<br/>';
+echo 'There are '.count($result).' users<br/>';
 
 if(is_array($result)) {
 	foreach($result as $user) {
