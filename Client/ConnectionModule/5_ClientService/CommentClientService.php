@@ -19,9 +19,9 @@ class CommentClientService {
     return $commentService->getComment($id);
   }
 
-  public function getComments() {
+  public function getComments($userId = NULL) {
   	$commentService = new CommentService();
-    return $commentService->getComments();
+    return $commentService->getComments($userId);
   }
 
 }

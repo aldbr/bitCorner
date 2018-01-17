@@ -40,13 +40,22 @@ class UserController {
 
 //Simulate a call from a view
 $userControllerTest = new UserController();
-$userModel1 = new UserModel("Username111","Password111","mail@lol.fr111");
+
+// ------------------------------------------------------------------------------- CREATE
+
+/*$userModel1 = new UserModel("Username111","Password111","mail@lol.fr111");
 $userModel2 = new UserModel("Username222","Password222","mail@lol.fr222");
 $userModel3 = new UserModel("Username333","Password333","mail@lol.fr333");
-//$userControllerTest->createUser($userModel1);
-//$userControllerTest->createUser($userModel);
-//$userControllerTest->createUser($userModel3);
+$userControllerTest->createUser($userModel1);
+$userControllerTest->createUser($userModel);
+$userControllerTest->createUser($userModel3);*/
 
+// ------------------------------------------------------------------------------- GET ONE
+/*$user = $userControllerTest->getUser(263);
+var_dump($user);*/
+
+// ------------------------------------------------------------------------------- GET ALL
+/*
 $result = $userControllerTest->getUsers();
 
 echo 'There are '.count($result).' users<br/>';
@@ -57,5 +66,6 @@ if(is_array($result)) {
 		//echo $user->getId().' - '.$user->getUsername().'<br/>';
 	}
 }
+*/
 
 ?>

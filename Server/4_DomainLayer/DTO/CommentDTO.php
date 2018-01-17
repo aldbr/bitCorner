@@ -5,14 +5,22 @@
  */
 class CommentDTO {
 
+  private $id;
   private $message;
   private $nbVotes;
-  private $user;
+  private $bitweetId;
+  private $userId;
 
-  public function __construct($message, $nbVotes, $user) {
+  public function __construct($id, $message, $nbVotes, $bitweetId, $userId) {
+    $this->id = $id;
     $this->message = $message;
     $this->nbVotes = $nbVotes;
-    $this->user = $user;
+    $this->bitweetId = $bitweetId;
+    $this->userId = $userId;
+  }
+
+  public function getId() {
+    return $this->id;
   }
 
   public function getMessage() {
@@ -23,8 +31,12 @@ class CommentDTO {
     return $this->nbVotes;
   }
 
-  public function getUser() {
-    return $this->user;
+  public function getBitweetId() {
+    return $this->bitweetId;
+  }
+
+  public function getUserId() {
+    return $this->userId;
   }
 }
 
