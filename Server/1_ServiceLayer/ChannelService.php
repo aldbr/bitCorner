@@ -12,6 +12,11 @@ class ChannelService {
     $channelAppService->createChannel($channelDTO);
   }
 
+  public function deleteChannel($id) {
+    $channelAppService = new ChannelAppService();
+    $channelAppService->deleteChannel($id);
+  }
+
   // -------------------- Getters --------------------------------
 
   public function getChannel($id) {

@@ -47,7 +47,10 @@ class ChannelPersistence {
   }
 
   public function deleteChannel($id) {
-
+    $query = "MATCH (c:Channel)-[r]-()
+              WHERE id(c) = ".$id."
+              DELETE r, c";
+    $result = Persistence::run($query);
   }
 }
 

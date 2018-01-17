@@ -13,6 +13,11 @@ class UserController {
     $userClientService->createUser($userDTO);
   }
 
+  public function deleteUser($id) {
+    $userClientService = new UserClientService();
+    $userDTO = $userClientService->deleteUser($id);
+  }
+
   // -------------------- Getters --------------------------------
 
   public function getUser($id) {

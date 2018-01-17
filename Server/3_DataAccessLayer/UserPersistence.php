@@ -32,7 +32,7 @@ class UserPersistence {
   }
 
   public function getUsers() {
-    $query = "MATCH (u:User) 
+    $query = "MATCH (u:User)
               RETURN id(u) as id,
                      u.username as username,
                      u.password as password,
@@ -78,7 +78,10 @@ class UserPersistence {
   }
 
   public function deleteUser($id) {
-
+    $query = "MATCH (u:User)-[r]-()
+              WHERE id(u) = ".$id."
+              DELETE r, u";
+    $result = Persistence::run($query);
   }
 }
 

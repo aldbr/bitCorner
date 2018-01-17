@@ -12,6 +12,11 @@ class ChannelClientService {
     $channelService->createChannel($channelDTO);
   }
 
+  public function deleteChannel($id) {
+    $channelService = new ChannelService();
+    $channelService->deleteChannel($id);
+  }
+
   // -------------------- Setters --------------------------------
 
   public function getChannel($id) {

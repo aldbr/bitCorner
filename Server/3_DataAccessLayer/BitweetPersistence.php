@@ -121,8 +121,11 @@ class BitweetPersistence {
 
   }
 
-  public function deleteBitweet($index) {
-
+  public function deleteBitweet($id) {
+    $query = "MATCH (b:Bitweet)-[r]-()
+              WHERE id(b) = ".$id."
+              DELETE r, b";
+    $result = Persistence::run($query);
   }
 }
 

@@ -12,6 +12,11 @@ class UserService {
     $userAppService->createUser($userDTO);
   }
 
+  public function deleteUser($id) {
+    $userAppService = new UserAppService();
+    $userAppService->deleteUser($id);
+  }
+
   // -------------------- Getters --------------------------------
 
   public function getUser($id) {
@@ -23,7 +28,7 @@ class UserService {
   	$userAppService = new UserAppService();
     return $userAppService->getUsers();
   }
-  
+
 }
 
 ?>

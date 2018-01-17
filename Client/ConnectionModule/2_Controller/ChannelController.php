@@ -13,6 +13,11 @@ class ChannelController {
     $channelClientService->createChannel($channelDTO);
   }
 
+  public function deleteChannel($id) {
+    $channelClientService = new ChannelClientService();
+    $channelDTO = $channelClientService->deleteChannel($id);
+  }
+
   // -------------------- Getters --------------------------------
 
   public function getChannel($id) {

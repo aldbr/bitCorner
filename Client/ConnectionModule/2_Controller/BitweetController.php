@@ -13,6 +13,11 @@ class BitweetController {
     $bitweetClientService->createBitweet($bitweetDTO);
   }
 
+  public function deleteBitweet($id) {
+    $bitweetClientService = new BitweetClientService();
+    $bitweetDTO = $bitweetClientService->deleteBitweet($id);
+  }
+
   // -------------------- Getters --------------------------------
 
   public function getBitweet($id) {
@@ -82,6 +87,8 @@ if(is_array($result)) {
 		//echo $user->getId().' - '.$user->getUsername().'<br/>';
 	}
 }
+
+$bitweetControllerTest->deleteBitweet(621);
 
 //$result = $bitweetControllerTest->getBitweet(621);
 //echo '<pre>' . var_dump($result) . '</pre>';

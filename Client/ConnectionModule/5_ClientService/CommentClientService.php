@@ -1,7 +1,7 @@
 <?php
 
 /**
- * This class contains all methods which call the server to manipulate comments 
+ * This class contains all methods which call the server to manipulate comments
  */
 class CommentClientService {
 
@@ -10,6 +10,11 @@ class CommentClientService {
   public function createComment($commentDTO){
     $commentService = new CommentService();
     $commentService->createComment($commentDTO);
+  }
+
+  public function deleteBitweet($id) {
+    $commentService = new CommentService();
+    $commentService->deleteComment($id);
   }
 
   // -------------------- Getters --------------------------------

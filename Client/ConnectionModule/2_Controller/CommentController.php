@@ -13,13 +13,18 @@ class CommentController {
     $commentClientService->createComment($commentDTO);
   }
 
+  public function deleteComment($id) {
+    $commentClientService = new CommentClientService();
+    $commentDTO = $commentClientService->deleteComment($id);
+  }
+
   // -------------------- Getters --------------------------------
 
   public function getComment($id) {
   	$commentClientService = new CommentClientService();
   	$commentDTO = $commentClientService->getComment($id);
     return CommentClientFactory::DTOToModel($commentDTO);
-    
+
   }
 
   public function getComments() {

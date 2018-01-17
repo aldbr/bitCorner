@@ -13,6 +13,11 @@ class UserAppService {
   	$userPersistence->createUser($userEntity);
   }
 
+  public function deleteUser($id){
+  	$userPersistence = new UserPersistence();
+  	$userPersistence->deleteUser($id);
+  }
+
   // -------------------- Getters --------------------------------
 
   public function getUser($id) {
@@ -31,7 +36,7 @@ class UserAppService {
 	    array_push($userDTOs, UserServerFactory::EntityToDTO($user));
 	  }
 	}
-	
+
 	return $userDTOs;
   }
 
