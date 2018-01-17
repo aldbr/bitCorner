@@ -5,6 +5,7 @@
  */
 class BitweetDTO {
 
+  private $id;
   private $message;
   private $nbVotes;
 

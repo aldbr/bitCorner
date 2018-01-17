@@ -50,7 +50,7 @@ echo 'There are '.count($result).' bitweets<br/>';
 
 if(is_array($result)) {
 	foreach($result as $bitw) {
-    var_dump($bitw);
+    echo '<pre>' . var_dump($bitw) . '</pre>';
 		//echo $user->getId().' - '.$user->getUsername().'<br/>';
 	}
 }

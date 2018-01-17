@@ -6,13 +6,22 @@
  */
 class ChannelEntity {
 
+  private $id;
   private $title;
   private $bitweets;
 
-  public function __construct($title) {
+  public function __construct($id, $title, $bitweets) {
+    self::setId($id);
     self::setTitle($title);
+    self::setBitweets($bitweets);
+  }
 
-    $this->bitweets = array();
+  public function getId() {
+    return $this->id;
+  }
+
+  public function setId($id) {
+    $this->id = $id;
   }
 
   public function getTitle() {
@@ -25,6 +34,10 @@ class ChannelEntity {
 
   public function getBitweets() {
     return $this->bitweets;
+  }
+
+  public function setBitweets($bitweets) {
+    $this->bitweets = $bitweets;
   }
 
   public function addBitweet($bitweet) {

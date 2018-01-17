@@ -5,6 +5,7 @@
  */
 class BitweetModel {
 
+  private $id;
   private $message;
 
   private $nbVotes;

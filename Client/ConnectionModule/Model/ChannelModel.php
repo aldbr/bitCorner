@@ -1,19 +1,18 @@
 <?php
 
 /**
- * Channel class: represents a kind of news feed containing bitweets of a
- * specific crypto currency
+ * Channel class on the client side
  */
-class ChannelDTO {
+class ChannelModel {
 
   private $id;
   private $title;
   private $bitweets;
 
-  public function __construct($id, $title, $bitweets) {
-    self::setId($id);
+  public function __construct($title) {
+    self::setId(-1);
     self::setTitle($title);
-    self::setBitweets($bitweets);
+    self::setBitweets(array());
   }
 
   public function getId() {
@@ -38,6 +37,14 @@ class ChannelDTO {
 
   public function setBitweets($bitweets) {
     $this->bitweets = $bitweets;
+  }
+
+  public function addBitweet($bitweet) {
+    $this->bitweets[] = $bitweet;
+  }
+
+  public function removeBitweet($index) {
+    unset($this->bitweets[$index]);
   }
 }
 
