@@ -1,12 +1,12 @@
 <?php
 
 //config loading
-require_once(__DIR__ . '/Config/Config.php');
+require_once(__DIR__ . '/6_Config/Config.php');
 //autoloader loading
-require_once(__DIR__ . '/Config/Autoload.php');
+require_once(__DIR__ . '/6_Config/Autoload.php');
 Autoload::load();
 
-include (__DIR__ . '/../Client/ConnectionModule/Controller/UserController.php');
-include (__DIR__ . '/../Client/ConnectionModule/Controller/BitweetController.php');
-include (__DIR__ . '/../Client/ConnectionModule/Controller/ChannelController.php');
+include (__DIR__ . '/../Client/ConnectionModule/2_Controller/UserController.php');
+include (__DIR__ . '/../Client/ConnectionModule/2_Controller/BitweetController.php');
+include (__DIR__ . '/../Client/ConnectionModule/2_Controller/ChannelController.php');
 ?>
