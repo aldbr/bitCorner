@@ -12,6 +12,11 @@ class CommentService {
     $commentAppService->createComment($commentDTO);
   }
 
+  public function deleteComment($id) {
+    $commentAppService = new CommentAppService();
+    $commentAppService->deleteComment($id);
+  }
+
   // -------------------- Getters --------------------------------
 
   public function getComment($id) {

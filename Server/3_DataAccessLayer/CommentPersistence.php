@@ -26,7 +26,7 @@ class CommentPersistence {
   public function getComment($id) {
     $query = "MATCH (c:Comment)-[WRITE]-(u:User),
                     (c:Comment)-[CONTAIN]-(b:Bitweet)
-              WHERE id(c) = ".$id." 
+              WHERE id(c) = ".$id."
               RETURN id(c) as id,
                      c.message as message,
                      c.nbVotes as nbVotes,
@@ -38,7 +38,7 @@ class CommentPersistence {
 
     return $this->readCommentRecord($record);
   }
-  
+
   public function getComments($userId) {
     $query = "MATCH (c:Comment)-[WRITE]-(u:User),
                     (c:Comment)-[CONTAIN]-(b:Bitweet) ";
@@ -77,11 +77,14 @@ class CommentPersistence {
   }
 
   public function updateNbVotes($id) {
-    
+
   }
 
   public function deleteComment($id) {
-
+    $query = "MATCH (c:Comment)-[r]-()
+              WHERE id(c) = ".$id."
+              DELETE r, c";
+    $result = Persistence::run($query);
   }
 
 }
