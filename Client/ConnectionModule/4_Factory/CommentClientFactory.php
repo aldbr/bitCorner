@@ -6,12 +6,10 @@
 class CommentClientFactory {
 
   public static function DTOToModel($dto) {
-  	$commentModel = new CommentModel($dto->getUsername(), $dto->getPassword(), $dto->getMail());
+  	$commentModel = new CommentModel($dto->getMessage(), $dto->getBitweetId(), $dto->getUserId());
     
     $commentModel->setId($dto->getId());
-    $commentModel->setNbFollowers($dto->getNbFollowers());
-    $commentModel->setNbFollowing($dto->getNbFollowing());
-    $commentModel->setBitweets($dto->getBitweets());
+    $commentModel->setNbVotes($dto->getNbVotes());
 
     return $commentModel;
   }
@@ -19,12 +17,10 @@ class CommentClientFactory {
   public static function ModelToDTO($model) {
   	return new CommentDTO(
       $model->getId(),
-  		$model->getUsername(),
-  		$model->getPassword(),
-  		$model->getMail(),
-  		$model->getNbFollowers(),
-  		$model->getNbFollowing(),
-  		$model->getBitweets()
+  		$model->getMessage(),
+  		$model->getNbVotes(),
+      $model->getBitweetId(),
+  		$model->getUserId()
   	);
   }
 }

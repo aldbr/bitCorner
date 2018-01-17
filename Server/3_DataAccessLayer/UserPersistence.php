@@ -17,7 +17,13 @@ class UserPersistence {
   }
 
   public function getUser($id) {
-    $query = "MATCH (u:User) WHERE id(u) = ".$id." RETURN u";
+    $query = "MATCH (u:User) WHERE id(u) = ".$id." 
+              RETURN id(u) as id,
+                     u.username as username,
+                     u.password as password,
+                     u.mail as mail,
+                     u.nbFollowers as nbFollowers,
+                     u.nbFollowing as nbFollowing";
     $result = Persistence::run($query);
     $record = $result->getRecord();
     return new UserEntity(
