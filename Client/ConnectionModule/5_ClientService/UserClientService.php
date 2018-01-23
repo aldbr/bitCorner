@@ -1,7 +1,7 @@
 <?php
 
 /**
- * This class contains all methods which call the server to manipulate users 
+ * This class contains all methods which call the server to manipulate users
  */
 class UserClientService {
 
@@ -12,11 +12,17 @@ class UserClientService {
     $userService->createUser($userDTO);
   }
 
+  public function deleteBitweet($id) {
+    $userService = new UserService();
+    $userService->deleteUser($id);
+  }
+
   // -------------------- Getters --------------------------------
 
   public function getUser($id) {
   	$userService = new UserService();
-    return $userService->getUser($id);
+    $jsonArray = json_decode($userService->getUser($id), true);
+    return UserClientFactory::JsonToDTO($jsonArray);
   }
 
   public function getUsers() {

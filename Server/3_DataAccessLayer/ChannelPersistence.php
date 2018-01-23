@@ -14,7 +14,9 @@ class ChannelPersistence {
   }
 
   public function getChannel($id) {
-    $query = "MATCH (c:Channel) WHERE id(c) = ".$id." RETURN c";
+    $query = "MATCH (c:Channel) WHERE id(c) = ".$id."
+              RETURN id(c) as id,
+                     c.title as title";
     $result = Persistence::run($query);
     $record = $result->getRecord();
     return new ChannelEntity(
@@ -47,7 +49,10 @@ class ChannelPersistence {
   }
 
   public function deleteChannel($id) {
-
+    $query = "MATCH (c:Channel)-[r]-()
+              WHERE id(c) = ".$id."
+              DELETE r, c";
+    $result = Persistence::run($query);
   }
 }
 

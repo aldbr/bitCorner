@@ -12,11 +12,17 @@ class ChannelService {
     $channelAppService->createChannel($channelDTO);
   }
 
+  public function deleteChannel($id) {
+    $channelAppService = new ChannelAppService();
+    $channelAppService->deleteChannel($id);
+  }
+
   // -------------------- Getters --------------------------------
 
   public function getChannel($id) {
   	$channelAppService = new ChannelAppService();
-    return $channelAppService->getChannel($id);
+    $jsonArray = ChannelServerFactory::DTOToJson($channelAppService->getChannel($id));
+    return json_encode($jsonArray);
   }
 
   public function getChannels() {

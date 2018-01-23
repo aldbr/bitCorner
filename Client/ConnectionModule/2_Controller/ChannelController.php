@@ -13,6 +13,11 @@ class ChannelController {
     $channelClientService->createChannel($channelDTO);
   }
 
+  public function deleteChannel($id) {
+    $channelClientService = new ChannelClientService();
+    $channelDTO = $channelClientService->deleteChannel($id);
+  }
+
   // -------------------- Getters --------------------------------
 
   public function getChannel($id) {
@@ -45,13 +50,16 @@ $channelModel3 = new ChannelModel("doge");
 //$channelControllerTest->createChannel($channelModel2);
 //$channelControllerTest->createChannel($channelModel3);
 
-$result = $channelControllerTest->getChannels();
-echo 'There are '.count($result).' channels<br/>';
+//$result = $channelControllerTest->getChannel(549);
+//var_dump($result);
 
-if(is_array($result)) {
-	foreach($result as $channel) {
-    echo '<pre>' . var_dump($channel) . '</pre>';
+//$result = $channelControllerTest->getChannels();
+//echo 'There are '.count($result).' channels<br/>';
+
+//if(is_array($result)) {
+//	foreach($result as $channel) {
+//    echo '<pre>' . var_dump($channel) . '</pre>';
 		//echo $user->getId().' - '.$user->getUsername().'<br/>';
-	}
-}
+// 	}
+//}
 ?>

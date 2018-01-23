@@ -13,6 +13,11 @@ class CommentController {
     $commentClientService->createComment($commentDTO);
   }
 
+  public function deleteComment($id) {
+    $commentClientService = new CommentClientService();
+    $commentDTO = $commentClientService->deleteComment($id);
+  }
+
   // -------------------- Getters --------------------------------
 
   public function getComment($id) {
@@ -64,8 +69,8 @@ $commentControllerTest = new CommentController();
 // $commentControllerTest->createComment($comment3);
 
 // ------------------------------------------------------------------------------- GET ONE
-// $comment = $commentControllerTest->getComment(264);
-// var_dump($comment);
+//$comment = $commentControllerTest->getComment(642);
+//var_dump($comment);
 
 // ------------------------------------------------------------------------------- GET ALL FROM USER ID
 

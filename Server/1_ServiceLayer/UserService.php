@@ -12,11 +12,17 @@ class UserService {
     $userAppService->createUser($userDTO);
   }
 
+  public function deleteUser($id) {
+    $userAppService = new UserAppService();
+    $userAppService->deleteUser($id);
+  }
+
   // -------------------- Getters --------------------------------
 
   public function getUser($id) {
   	$userAppService = new UserAppService();
-    return $userAppService->getUser($id);
+    $jsonArray = UserServerFactory::DTOToJson($userAppService->getUser($id));
+    return json_encode($jsonArray);
   }
 
   public function getUsers() {

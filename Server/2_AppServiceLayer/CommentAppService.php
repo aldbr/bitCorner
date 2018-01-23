@@ -13,6 +13,11 @@ class CommentAppService {
   	$commentPersistence->createComment($commentEntity);
   }
 
+  public function deleteComment($id){
+  	$commentPersistence = new CommentPersistence();
+  	$commentPersistence->deleteComment($id);
+  }
+
   // -------------------- Getters --------------------------------
 
   public function getComment($id) {

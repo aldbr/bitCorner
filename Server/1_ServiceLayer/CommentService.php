@@ -12,11 +12,17 @@ class CommentService {
     $commentAppService->createComment($commentDTO);
   }
 
+  public function deleteComment($id) {
+    $commentAppService = new CommentAppService();
+    $commentAppService->deleteComment($id);
+  }
+
   // -------------------- Getters --------------------------------
 
   public function getComment($id) {
   	$commentAppService = new CommentAppService();
-    return $commentAppService->getComment($id);
+    $jsonArray = CommentServerFactory::DTOToJson($commentAppService->getComment($id));
+    return json_encode($jsonArray);
   }
 
   public function getComments($userId = NULL) {

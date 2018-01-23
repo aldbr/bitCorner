@@ -13,6 +13,11 @@ class ChannelAppService {
   	$channelPersistence->createChannel($channelEntity);
   }
 
+  public function deleteChannel($id){
+  	$channelPersistence = new ChannelPersistence();
+  	$channelPersistence->deleteChannel($id);
+  }
+
   // -------------------- Getters --------------------------------
 
   public function getChannel($id) {

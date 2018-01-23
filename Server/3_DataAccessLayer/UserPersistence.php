@@ -39,7 +39,7 @@ class UserPersistence {
   }
 
   public function getUsers() {
-    $query = "MATCH (u:User) 
+    $query = "MATCH (u:User)
               RETURN id(u) as id,
                      u.username as username,
                      u.password as password,
@@ -71,6 +71,33 @@ class UserPersistence {
               RETURN u";
     $result = Persistence::run($query);
     return $result->getRecord()!=null;
+  }
+  
+  public function updateUsername($id, $newUsername) {
+
+  }
+
+  public function updatePassword($id, $newPassword) {
+
+  }
+
+  public function updateMail($id, $newMail) {
+
+  }
+
+  public function updateNbFollowers($id) {
+
+  }
+
+  public function updateNbFollowing($id) {
+
+  }
+
+  public function deleteUser($id) {
+    $query = "MATCH (u:User)-[r]-()
+              WHERE id(u) = ".$id."
+              DELETE r, u";
+    $result = Persistence::run($query);
   }
 }
 

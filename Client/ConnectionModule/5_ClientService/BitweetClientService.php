@@ -7,9 +7,14 @@ class BitweetClientService {
 
   // -------------------- Setters --------------------------------
 
-  public function createBitweet($bitweetDTO){
+  public function createBitweet($bitweetDTO) {
     $bitweetService = new BitweetService();
     $bitweetService->createBitweet($bitweetDTO);
+  }
+
+  public function deleteBitweet($id) {
+    $bitweetService = new BitweetService();
+    $bitweetService->deleteBitweet($id);
   }
 
   // -------------------- Setters --------------------------------

@@ -13,6 +13,11 @@ class UserController {
     $userClientService->createUser($userDTO);
   }
 
+  public function deleteUser($id) {
+    $userClientService = new UserClientService();
+    $userDTO = $userClientService->deleteUser($id);
+  }
+
   // -------------------- Getters --------------------------------
 
   public function getUser($id) {
@@ -55,8 +60,12 @@ $userControllerTest = new UserController();
 //$userControllerTest->createUser($userModel3);
 
 // ------------------------------------------------------------------------------- GET ONE
-/*$user = $userControllerTest->getUser(263);
-var_dump($user);*/
+//$user = $userControllerTest->getUser(435);
+//echo $user->getId() .'\n';
+//echo $user->getUsername() .'\n';
+//echo $user->getPassword() .'\n';
+//echo $user->getNbFollowers() .'\n';
+//echo $user->getNbFollowing();
 
 // ------------------------------------------------------------------------------- GET ALL
 /*

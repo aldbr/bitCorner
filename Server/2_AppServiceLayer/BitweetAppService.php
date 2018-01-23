@@ -13,6 +13,11 @@ class BitweetAppService {
   	$bitweetPersistence->createBitweet($bitweetEntity);
   }
 
+  public function deleteBitweet($id){
+  	$bitweetPersistence = new BitweetPersistence();
+  	$bitweetPersistence->deleteBitweet($id);
+  }
+
   // -------------------- Getters --------------------------------
 
   public function getBitweet($id) {
