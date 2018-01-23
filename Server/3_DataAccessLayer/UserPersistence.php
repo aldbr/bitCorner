@@ -6,6 +6,7 @@
 class UserPersistence {
 
   public function createUser($user) {
+    //TODO : username / mail unique
     $query = "CREATE (user:User {";
     $query .= "username:'". $user->getUsername() ."',";
     $query .= "password:'". $user->getPassword() ."',";
@@ -63,28 +64,13 @@ class UserPersistence {
     return $userEntities;
   }
 
-  public function updateUsername($id, $newUsername) {
-
-  }
-
-  public function updatePassword($id, $newPassword) {
-
-  }
-
-  public function updateMail($id, $newMail) {
-
-  }
-
-  public function updateNbFollowers($id) {
-
-  }
-
-  public function updateNbFollowing($id) {
-
-  }
-
-  public function deleteUser($id) {
-
+  public function connect($username, $password) {
+    $query = "MATCH (u:User)
+              WHERE u.username = \"".$username."\" 
+              AND   u.password = \"".$password."\"
+              RETURN u";
+    $result = Persistence::run($query);
+    return $result->getRecord()!=null;
   }
 }
 

@@ -19,7 +19,6 @@ class UserController {
   	$userClientService = new UserClientService();
   	$userDTO = $userClientService->getUser($id);
     return UserClientFactory::DTOToModel($userDTO);
-
   }
 
   public function getUsers() {
@@ -28,14 +27,19 @@ class UserController {
   	$userModels = array();
 
     if(is_array($userDTOs)) {
-  	  foreach($userDTOs as $user) {
-  	    array_push($userModels, UserClientFactory::DTOToModel($user));
-  	  }
-	}
+  	   foreach($userDTOs as $user) {
+  	     array_push($userModels, UserClientFactory::DTOToModel($user));
+  	   }
+	 }
 
-	return $userModels;
+	 return $userModels;
   }
 
+  public function connect($username, $password)
+  {
+    $userClientService = new UserClientService();
+    return $userClientService->connect($username, $password);
+  }
 }
 
 //Simulate a call from a view
@@ -43,12 +47,12 @@ $userControllerTest = new UserController();
 
 // ------------------------------------------------------------------------------- CREATE
 
-/*$userModel1 = new UserModel("Username111","Password111","mail@lol.fr111");
-$userModel2 = new UserModel("Username222","Password222","mail@lol.fr222");
-$userModel3 = new UserModel("Username333","Password333","mail@lol.fr333");
-$userControllerTest->createUser($userModel1);
-$userControllerTest->createUser($userModel);
-$userControllerTest->createUser($userModel3);*/
+//$userModel1 = new UserModel("Username111","Password111","mail@lol.fr111");
+//$userModel2 = new UserModel("Username222","Password222","mail@lol.fr222");
+//$userModel3 = new UserModel("Username333","Password333","mail@lol.fr333");
+//$userControllerTest->createUser($userModel1);
+//$userControllerTest->createUser($userModel2);
+//$userControllerTest->createUser($userModel3);
 
 // ------------------------------------------------------------------------------- GET ONE
 /*$user = $userControllerTest->getUser(263);
@@ -67,5 +71,9 @@ if(is_array($result)) {
 	}
 }
 */
+
+// ------------------------------------------------------------------------------- CHECK CONNEXION
+$existingUser = $userControllerTest->connect("Username111", "Password111");
+$nonExistingUser = $userControllerTest->connect("Username111", "Password222");
 
 ?>

@@ -30,7 +30,7 @@ class Autoload {
     private static function _autoload($class) {
         global $rep;
         $filename = $class . '.php';
-        $dir = array('./', '6_Config/', '3_DataAccessLayer/', '4_DomainLayer/DTO/', '4_DomainLayer/Entities/', '4_DomainLayer/Factory/',
+        $dir = array('./', '7_WebService/', '6_Config/', '3_DataAccessLayer/', '4_DomainLayer/DTO/', '4_DomainLayer/Entities/', '4_DomainLayer/Factory/',
         '2_AppServiceLayer/', '1_ServiceLayer/', '../Client/ConnectionModule/2_Controller/', '../Client/ConnectionModule/3_Model/', 
         '../Client/ConnectionModule/1_View/', '../Client/ConnectionModule/4_Factory/','../Client/ConnectionModule/5_ClientService/');
         foreach ($dir as $d) {

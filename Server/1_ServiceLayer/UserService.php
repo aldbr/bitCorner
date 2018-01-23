@@ -23,6 +23,11 @@ class UserService {
   	$userAppService = new UserAppService();
     return $userAppService->getUsers();
   }
+
+  public function connect($username, $password) {
+    $userAppService = new UserAppService();
+    return $userAppService->connect($username, $password);
+  }
   
 }
 

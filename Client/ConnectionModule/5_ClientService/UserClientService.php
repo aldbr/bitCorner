@@ -24,6 +24,11 @@ class UserClientService {
     return $userService->getUsers();
   }
 
+  public function connect($username, $password) {
+    $userService = new UserService();
+    return $userService->connect($username, $password);
+  }
+
 }
 
 ?>
