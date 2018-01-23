@@ -56,8 +56,12 @@ $userControllerTest->createUser($userModel);
 $userControllerTest->createUser($userModel3);*/
 
 // ------------------------------------------------------------------------------- GET ONE
-/*$user = $userControllerTest->getUser(263);
-var_dump($user);*/
+//$user = $userControllerTest->getUser(435);
+//echo $user->getId() .'\n';
+//echo $user->getUsername() .'\n';
+//echo $user->getPassword() .'\n';
+//echo $user->getNbFollowers() .'\n';
+//echo $user->getNbFollowing();
 
 // ------------------------------------------------------------------------------- GET ALL
 /*

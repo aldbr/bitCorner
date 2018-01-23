@@ -21,7 +21,8 @@ class CommentService {
 
   public function getComment($id) {
   	$commentAppService = new CommentAppService();
-    return $commentAppService->getComment($id);
+    $jsonArray = CommentServerFactory::DTOToJson($commentAppService->getComment($id));
+    return json_encode($jsonArray);
   }
 
   public function getComments($userId = NULL) {

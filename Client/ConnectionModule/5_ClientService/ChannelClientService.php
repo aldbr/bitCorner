@@ -21,7 +21,8 @@ class ChannelClientService {
 
   public function getChannel($id) {
   	$channelService = new ChannelService();
-    return $channelService->getChannel($id);
+    $jsonArray = json_decode($channelService->getChannel($id), true);
+    return ChannelClientFactory::JsonToDTO($jsonArray);
   }
 
   public function getChannels() {

@@ -14,7 +14,9 @@ class ChannelPersistence {
   }
 
   public function getChannel($id) {
-    $query = "MATCH (c:Channel) WHERE id(c) = ".$id." RETURN c";
+    $query = "MATCH (c:Channel) WHERE id(c) = ".$id."
+              RETURN id(c) as id,
+                     c.title as title";
     $result = Persistence::run($query);
     $record = $result->getRecord();
     return new ChannelEntity(
