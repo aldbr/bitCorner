@@ -5,30 +5,37 @@
  */
 class UserAppService {
 
+  // -------------------- Attributes ------------------------------
+
+  private $userPersistence;
+
+  // -------------------- Constructor ------------------------------
+
+  public function __construct()
+  {
+    $this->$userPersistence = new UserPersistence();
+  }
+
   // -------------------- Setters --------------------------------
 
   public function createUser($userDTO){
   	$userEntity = UserServerFactory::DTOToEntity($userDTO);
-  	$userPersistence = new UserPersistence();
-  	$userPersistence->createUser($userEntity);
+  	$this->$userPersistence->createUser($userEntity);
   }
 
   public function deleteUser($id){
-  	$userPersistence = new UserPersistence();
-  	$userPersistence->deleteUser($id);
+  	$this->$userPersistence->deleteUser($id);
   }
 
   // -------------------- Getters --------------------------------
 
   public function getUser($id) {
-  	$userPersistence = new UserPersistence();
-  	$userEntity = $userPersistence->getUser($id);
+  	$userEntity = $this->$userPersistence->getUser($id);
     return UserServerFactory::EntityToDTO($userEntity);
   }
 
   public function getUsers() {
-  	$userPersistence = new UserPersistence();
-  	$userEntities = $userPersistence->getUsers();
+  	$userEntities = $this->$userPersistence->getUsers();
   	$userDTOs = array();
 
   	if(is_array($userEntities)) {
@@ -40,8 +47,7 @@ class UserAppService {
   }
 
   public function connect($username, $password) {
-    $userPersistence = new UserPersistence();
-    return $userPersistence->connect($username, $password);
+    return $this->$userPersistence->connect($username, $password);
 	}
 }
 

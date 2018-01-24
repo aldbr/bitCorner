@@ -1,0 +1,132 @@
+// Delete
+
+MATCH (n) DETACH DELETE n
+
+// User creation
+CREATE (user1:User 
+			{ 
+				username:'admin', 
+				password:'admin', 
+				mail:'admin@mail.fr', 
+				nbFollowers:0, 
+				nbFollowing:0
+			}
+		)
+CREATE (user2:User 
+			{ 
+				username:'lefifou', 
+				password:'1234', 
+				mail:'lefifou@mail.fr', 
+				nbFollowers:45, 
+				nbFollowing:9
+			}
+		)
+CREATE (user3:User 
+			{ 
+				username:'Binance', 
+				password:'1234', 
+				mail:'Binance@mail.fr', 
+				nbFollowers:98765, 
+				nbFollowing:160
+			}
+		)
+CREATE (user4:User 
+			{ 
+				username:'BitcoinTeam', 
+				password:'1234', 
+				mail:'bitcointeam@mail.fr', 
+				nbFollowers:468895, 
+				nbFollowing:25
+			}
+		)
+
+		
+// Channel creation
+CREATE (channel1:Channel { title:'General' } )
+CREATE (channel2:Channel { title:'BTC' } )
+
+// Bitweets creation
+CREATE (bitweet1:Bitweet
+			{
+				message:'Announcement : BTC meetup next monday',
+				nbVotes:56000
+			}
+		)
+CREATE (bitweet2:Bitweet
+			{
+				message:'Announcement : ETH meetup tonigh',
+				nbVotes:35000
+			}
+		)
+CREATE (bitweet3:Bitweet
+			{
+				message:'Announcement : LTC team grow up',
+				nbVotes:12500
+			}
+		)
+CREATE (bitweet4:Bitweet
+			{
+				message:'LUX added to binance',
+				nbVotes:5600
+			}
+		)
+CREATE (bitweet5:Bitweet
+			{
+				message:'Server on maintenance sorry for the convenience',
+				nbVotes:8456
+			}
+		)
+CREATE (bitweet6:Bitweet
+			{
+				message:'Bitcoin Lighting network available',
+				nbVotes:78996
+			}
+		)
+CREATE (bitweet7:Bitweet
+			{
+				message:'Bitcoin fork on 25/03/2018 get ready',
+				nbVotes:895656
+			}
+		)
+
+// Comments creation
+CREATE (comment1: Comment
+			{
+				message: 'Nice !'
+			}
+		)
+CREATE (comment2: Comment
+			{
+				message: 'Great news'
+			}
+		)
+CREATE (comment3: Comment
+			{
+				message: 'Happy to hear that'
+			}
+		)
+
+// Relationships
+CREATE (user2)-[r1:WRITE]->(bitweet1)
+CREATE (user2)-[r2:WRITE]->(bitweet2)
+CREATE (user2)-[r3:WRITE]->(bitweet3)
+CREATE (user3)-[r4:WRITE]->(bitweet4)
+CREATE (user3)-[r5:WRITE]->(bitweet5)
+CREATE (user4)-[r6:WRITE]->(bitweet6)
+CREATE (user4)-[r7:WRITE]->(bitweet7)
+
+CREATE (user2)-[r8:WRITE]->(comment1)
+CREATE (user2)-[r9:WRITE]->(comment2)
+CREATE (user3)-[r10:WRITE]->(comment3)
+
+CREATE (channel1)-[r11:CONTAIN]->(bitweet1)
+CREATE (channel1)-[r12:CONTAIN]->(bitweet2)
+CREATE (channel1)-[r13:CONTAIN]->(bitweet3)
+CREATE (channel1)-[r14:CONTAIN]->(bitweet4)
+CREATE (channel1)-[r15:CONTAIN]->(bitweet5)
+CREATE (channel2)-[r16:CONTAIN]->(bitweet6)
+CREATE (channel2)-[r17:CONTAIN]->(bitweet7)
+
+CREATE (bitweet1)-[r18:CONTAIN]->(comment1)
+CREATE (bitweet1)-[r19:CONTAIN]->(comment2)
+CREATE (bitweet2)-[r20:CONTAIN]->(comment3)

@@ -5,30 +5,37 @@
  */
 class BitweetAppService {
 
+  // -------------------- Attributes ------------------------------
+
+  private $bitweetPersistence;
+
+  // -------------------- Constructor ------------------------------
+
+  public function __construct()
+  {
+    $this->$bitweetPersistence = new BitweetPersistence();
+  }
+
   // -------------------- Setters --------------------------------
 
   public function createBitweet($bitweetDTO){
   	$bitweetEntity = BitweetServerFactory::DTOToEntity($bitweetDTO);
-  	$bitweetPersistence = new BitweetPersistence();
-  	$bitweetPersistence->createBitweet($bitweetEntity);
+  	$this->$bitweetPersistence->createBitweet($bitweetEntity);
   }
 
   public function deleteBitweet($id){
-  	$bitweetPersistence = new BitweetPersistence();
-  	$bitweetPersistence->deleteBitweet($id);
+  	$this->$bitweetPersistence->deleteBitweet($id);
   }
 
   // -------------------- Getters --------------------------------
 
   public function getBitweet($id) {
-  	$bitweetPersistence = new BitweetPersistence();
-  	$bitweetEntity = $bitweetPersistence->getBitweet($id);
+  	$bitweetEntity = $this->$bitweetPersistence->getBitweet($id);
     return BitweetServerFactory::EntityToDTO($bitweetEntity);
   }
 
   public function getBitweets() {
-  	$bitweetPersistence = new BitweetPersistence();
-  	$bitweetEntities = $bitweetPersistence->getBitweets();
+  	$bitweetEntities = $this->$bitweetPersistence->getBitweets();
   	$bitweetDTOs = array();
 
   	if(is_array($bitweetEntities)) {
@@ -40,8 +47,7 @@ class BitweetAppService {
   }
 
   public function getBitweetsFromUser($idUser) {
-  	$bitweetPersistence = new BitweetPersistence();
-  	$bitweetEntities = $bitweetPersistence->getBitweetsFromUser($idUser);
+  	$bitweetEntities = $this->$bitweetPersistence->getBitweetsFromUser($idUser);
   	$bitweetDTOs = array();
 
   	if(is_array($bitweetEntities)) {
@@ -53,8 +59,7 @@ class BitweetAppService {
   }
 
   public function getBitweetsFromChannel($idChannel) {
-  	$bitweetPersistence = new BitweetPersistence();
-  	$bitweetEntities = $bitweetPersistence->getBitweetsFromChannel($idChannel);
+  	$bitweetEntities = $this->$bitweetPersistence->getBitweetsFromChannel($idChannel);
   	$bitweetDTOs = array();
 
   	if(is_array($bitweetEntities)) {

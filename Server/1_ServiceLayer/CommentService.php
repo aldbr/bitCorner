@@ -5,28 +5,35 @@
  */
 class CommentService {
 
+  // -------------------- Attributes ------------------------------
+
+  private $commentAppService;
+
+  // -------------------- Constructor ------------------------------
+
+  public function __construct()
+  {
+    $this->$commentAppService = new CommentAppService();
+  }
+
   // -------------------- Setters --------------------------------
 
   public function createComment($commentDTO){
-    $commentAppService = new CommentAppService();
-    $commentAppService->createComment($commentDTO);
+    $this->$commentAppService->createComment($commentDTO);
   }
 
   public function deleteComment($id) {
-    $commentAppService = new CommentAppService();
-    $commentAppService->deleteComment($id);
+    $this->$commentAppService->deleteComment($id);
   }
 
   // -------------------- Getters --------------------------------
 
   public function getComment($id) {
-  	$commentAppService = new CommentAppService();
-    return $commentAppService->getComment($id);
+    return $this->$commentAppService->getComment($id);
   }
 
   public function getComments($userId = NULL) {
-  	$commentAppService = new CommentAppService();
-    return $commentAppService->getComments($userId);
+    return $this->$commentAppService->getComments($userId);
   }
 }
 

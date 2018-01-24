@@ -5,33 +5,39 @@
  */
 class UserService {
 
+  // -------------------- Attributes ------------------------------
+
+  private $userAppService;
+
+  // -------------------- Constructor ------------------------------
+
+  public function __construct()
+  {
+    $this->$userAppService = new UserAppService();
+  }
+
   // -------------------- Setters --------------------------------
 
   public function createUser($userDTO){
-    $userAppService = new UserAppService();
-    $userAppService->createUser($userDTO);
+    $this->$userAppService->createUser($userDTO);
   }
 
   public function deleteUser($id) {
-    $userAppService = new UserAppService();
-    $userAppService->deleteUser($id);
+    $this->$userAppService->deleteUser($id);
   }
 
   // -------------------- Getters --------------------------------
 
   public function getUser($id) {
-  	$userAppService = new UserAppService();
-    return $userAppService->getUser($id);
+    return $this->$userAppService->getUser($id);
   }
 
   public function getUsers() {
-  	$userAppService = new UserAppService();
-    return $userAppService->getUsers();
+    return $this->$userAppService->getUsers();
   }
 
   public function connect($username, $password) {
-    $userAppService = new UserAppService();
-    return $userAppService->connect($username, $password);
+    return $this->$userAppService->connect($username, $password);
   }
   
 }
