@@ -24,6 +24,25 @@ class BitweetClientFactory {
       $model->getIdChannel()
   	);
   }
+
+  public static function DTOToJson($dto) {
+    return ['id' => $dto->getId(),
+            'message' => $dto->getMessage(),
+            'nbVotes' => $dto->getNbVotes(),
+            'comments' => $dto->getComments(),
+            'idUser' => $dto->getIdUser(),
+            'idChannel' => $dto->getIdChannel()];
+  }
+
+  public static function JsonToDTO($json) {
+    return new BitweetDTO(
+      $json['id'],
+      $json['message'],
+      $json['nbVotes'],
+      $json['comments'],
+      $json['idUser'],
+      $json['idChannel']);
+  }
 }
 
 ?>
