@@ -18,12 +18,8 @@ class ChannelPersistence {
               RETURN id(c) as id,
                      c.title as title";
     $result = Persistence::run($query);
-    $record = $result->getRecord();
-    return new ChannelEntity(
-        $record->value('id'),
-        $record->value('title'),
-        array()
-      );
+    
+    return $this->readChannelRecord($result->getRecord());
   }
 
   public function getChannels() {
@@ -34,12 +30,7 @@ class ChannelPersistence {
     $channelEntities = array();
 
     foreach ($result->getRecords() as $record) {
-      $channel = new ChannelEntity(
-        $record->value('id'),
-        $record->value('title'),
-        array()
-      );
-      array_push($channelEntities, $channel);
+      array_push($channelEntities, $this->readChannelRecord($record));
     }
     return $channelEntities;
   }
@@ -53,6 +44,20 @@ class ChannelPersistence {
               WHERE id(c) = ".$id."
               DELETE r, c";
     $result = Persistence::run($query);
+  }
+
+  public function readChannelRecord($record)
+  {
+    if($record == NULL)
+    {
+      return NULL;
+    }
+    
+    return new ChannelEntity(
+        $record->value('id'),
+        $record->value('title'),
+        array()
+    );
   }
 }
 

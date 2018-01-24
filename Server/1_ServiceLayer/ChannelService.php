@@ -21,8 +21,7 @@ class ChannelService {
 
   public function getChannel($id) {
   	$channelAppService = new ChannelAppService();
-    $jsonArray = ChannelServerFactory::DTOToJson($channelAppService->getChannel($id));
-    return json_encode($jsonArray);
+    return $channelAppService->getChannel($id);
   }
 
   public function getChannels() {

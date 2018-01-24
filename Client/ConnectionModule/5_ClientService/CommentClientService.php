@@ -9,25 +9,36 @@ class CommentClientService {
 
   public function createComment($commentDTO){
     $commentService = new CommentService();
-    $commentService->createComment($commentDTO);
+    $params = json_encode(ChannelClientFactory::DTOToJson($bitweetDTO));
+    $json = BitCornerWebService::callMethod('createComment',$params);
   }
 
   public function deleteBitweet($id) {
     $commentService = new CommentService();
-    $commentService->deleteComment($id);
+    $params = json_encode(['id' => $id]);
+    $json = BitCornerWebService::callMethod('deleteComment',$params);
   }
 
   // -------------------- Getters --------------------------------
 
   public function getComment($id) {
   	$commentService = new CommentService();
-    $jsonArray = json_decode($commentService->getComment($id), true);
+    $params = json_encode(['id' => $id]);
+
+    $json = BitCornerWebService::callMethod('getComment',$params);
+
+    $jsonArray = json_decode($json, true);
     return CommentClientFactory::JsonToDTO($jsonArray);
   }
 
   public function getComments($userId = NULL) {
   	$commentService = new CommentService();
-    return $commentService->getComments($userId);
+    $params = json_encode(['userId' => $id]);
+
+    $json = BitCornerWebService::callMethod('getComments', $params);
+
+    $jsonArray = json_decode($json, true);
+    return CommentClientFactory::JsonArrayToDTOArray($jsonArray);
   }
 
 }

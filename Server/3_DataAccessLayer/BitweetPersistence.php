@@ -28,15 +28,8 @@ class BitweetPersistence {
                       id(u) as idUser,
                       id(c) as idChannel";
     $result = Persistence::run($query);
-    $record = $result->getRecord();
-    return new BitweetEntity(
-        $record->value('id'),
-        $record->value('message'),
-        $record->value('nbVotes'),
-        array(),
-        $record->value('idUser'),
-        $record->value('idChannel')
-      );
+    
+    return $this->readBitweetRecord($result->getRecord());
   }
 
   public function getBitweets() {
@@ -50,15 +43,7 @@ class BitweetPersistence {
     $bitweetEntities = array();
 
     foreach ($result->getRecords() as $record) {
-      $bitweet = new BitweetEntity(
-        $record->value('id'),
-        $record->value('message'),
-        $record->value('nbVotes'),
-        array(),
-        $record->value('idUser'),
-        $record->value('idChannel')
-      );
-      array_push($bitweetEntities, $bitweet);
+      array_push($bitweetEntities, $$this->readBitweetRecord($record));
     }
     return $bitweetEntities;
   }
@@ -75,15 +60,7 @@ class BitweetPersistence {
     $bitweetEntities = array();
 
     foreach ($result->getRecords() as $record) {
-      $bitweet = new BitweetEntity(
-      $record->value('id'),
-      $record->value('message'),
-      $record->value('nbVotes'),
-      array(),
-      $record->value('idUser'),
-      $record->value('idChannel')
-      );
-      array_push($bitweetEntities, $bitweet);
+      array_push($bitweetEntities, $this->readBitweetRecord($record));
     }
     return $bitweetEntities;
   }
@@ -100,15 +77,7 @@ class BitweetPersistence {
     $bitweetEntities = array();
 
     foreach ($result->getRecords() as $record) {
-      $bitweet = new BitweetEntity(
-      $record->value('id'),
-      $record->value('message'),
-      $record->value('nbVotes'),
-      array(),
-      $record->value('idUser'),
-      $record->value('idChannel')
-      );
-      array_push($bitweetEntities, $bitweet);
+      array_push($bitweetEntities, $this->readBitweetRecord($record));
     }
     return $bitweetEntities;
   }
@@ -126,6 +95,23 @@ class BitweetPersistence {
               WHERE id(b) = ".$id."
               DELETE r, b";
     $result = Persistence::run($query);
+  }
+
+  public function readBitweetRecord($record)
+  {
+    if($record == NULL)
+    {
+      return NULL;
+    }
+    
+    return new BitweetEntity(
+      $record->value('id'),
+      $record->value('message'),
+      $record->value('nbVotes'),
+      array(),
+      $record->value('idUser'),
+      $record->value('idChannel')
+    );
   }
 }
 

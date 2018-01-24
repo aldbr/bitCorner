@@ -23,9 +23,11 @@ class ChannelServerFactory {
   }
 
   public static function DTOToJson($dto) {
-    return ['id' => $dto->getId(),
+    return [
+            'id' => $dto->getId(),
             'title' => $dto->getTitle(),
-            'bitweets' => $dto->getBitweets()];
+            'bitweets' => $dto->getBitweets()
+           ];
   }
 
   public static function JsonToDTO($json) {

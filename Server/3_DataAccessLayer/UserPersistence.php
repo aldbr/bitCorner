@@ -6,6 +6,7 @@
 class UserPersistence {
 
   public function createUser($user) {
+    //TODO : username / mail unique
     $query = "CREATE (user:User {";
     $query .= "username:'". $user->getUsername() ."',";
     $query .= "password:'". $user->getPassword() ."',";
@@ -25,16 +26,8 @@ class UserPersistence {
                      u.nbFollowers as nbFollowers,
                      u.nbFollowing as nbFollowing";
     $result = Persistence::run($query);
-    $record = $result->getRecord();
-    return new UserEntity(
-        $record->value('id'),
-        $record->value('username'),
-        $record->value('password'),
-        $record->value('mail'),
-        $record->value('nbFollowers'),
-        $record->value('nbFollowing'),
-        array()
-      );
+
+    return $this->readUserRecord($result->getRecord());
   }
 
   public function getUsers() {
@@ -49,20 +42,21 @@ class UserPersistence {
     $userEntities = array();
 
     foreach ($result->getRecords() as $record) {
-      $user = new UserEntity(
-        $record->value('id'),
-        $record->value('username'),
-        $record->value('password'),
-        $record->value('mail'),
-        $record->value('nbFollowers'),
-        $record->value('nbFollowing'),
-        array()
-      );
-      array_push($userEntities, $user);
+      array_push($userEntities, $this->readUserRecord($record));
     }
+
     return $userEntities;
   }
 
+  public function connect($username, $password) {
+    $query = "MATCH (u:User)
+              WHERE u.username = \"".$username."\" 
+              AND   u.password = \"".$password."\"
+              RETURN u";
+    $result = Persistence::run($query);
+    return $result->getRecord()!=null;
+  }
+  
   public function updateUsername($id, $newUsername) {
 
   }
@@ -88,6 +82,24 @@ class UserPersistence {
               WHERE id(u) = ".$id."
               DELETE r, u";
     $result = Persistence::run($query);
+  }
+
+  public function readUserRecord($record)
+  {
+    if($record == NULL)
+    {
+      return NULL;
+    }
+    
+    return new UserEntity(
+        $record->value('id'),
+        $record->value('username'),
+        $record->value('password'),
+        $record->value('mail'),
+        $record->value('nbFollowers'),
+        $record->value('nbFollowing'),
+        array()
+    );
   }
 }
 

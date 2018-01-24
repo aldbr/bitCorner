@@ -13,7 +13,7 @@ class UserModel {
   private $nbFollowing;
   private $bitweets;
 
-  public function __construct($username, $password, $mail) {
+  public function __construct($username, $password, $mail = "") {
     self::setUsername($username);
     self::setPassword($password);
     self::setMail($mail);

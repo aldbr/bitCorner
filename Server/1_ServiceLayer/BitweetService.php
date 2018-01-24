@@ -21,8 +21,7 @@ class BitweetService {
 
   public function getBitweet($id) {
   	$bitweetAppService = new BitweetAppService();
-    $jsonArray = BitweetServerFactory::DTOToJson($bitweetAppService->getBitweet($id));
-    return json_encode($jsonArray);
+    return $bitweetAppService->getBitweet($id);
   }
 
   public function getBitweets() {
