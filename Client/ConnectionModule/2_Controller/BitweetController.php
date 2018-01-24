@@ -71,15 +71,20 @@ class BitweetController {
 
 //Simulate a call from a view
 $bitweetControllerTest = new BitweetController();
-$bitModel1 = new BitweetModel("bit1", 435, 437);
-$bitModel2 = new BitweetModel("bit2", 435, 437);
-$bitModel3 = new BitweetModel("bit3", 435, 437);
+
+// ------------------------------------------------------------------------------- CREATE
+//$bitModel1 = new BitweetModel("bit1", 278, 252);
+//$bitModel2 = new BitweetModel("bit2", 435, 437);
+//$bitModel3 = new BitweetModel("bit3", 435, 437);
 //$bitweetControllerTest->createBitweet($bitModel1);
 //$bitweetControllerTest->createBitweet($bitModel2);
 //$bitweetControllerTest->createBitweet($bitModel3);
 
-//$result = $bitweetControllerTest->getBitweet(437);
+// ------------------------------------------------------------------------------- GET ONE 
+//$result = $bitweetControllerTest->getBitweet(344);
 //var_dump($result);
+
+// ------------------------------------------------------------------------------- GET ALL
 //$result = $bitweetControllerTest->getBitweets();
 //echo 'There are '.count($result).' bitweets<br/>';
 
@@ -90,7 +95,8 @@ $bitModel3 = new BitweetModel("bit3", 435, 437);
 //	}
 //}
 
-//$bitweetControllerTest->deleteBitweet(621);
+// ------------------------------------------------------------------------------- DELETE
+//$bitweetControllerTest->deleteBitweet(344);
 
 //$result = $bitweetControllerTest->getBitweet(621);
 //echo '<pre>' . var_dump($result) . '</pre>';

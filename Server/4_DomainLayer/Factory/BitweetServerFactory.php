@@ -45,6 +45,17 @@ class BitweetServerFactory {
       $json['idUser'],
       $json['idChannel']);
   }
+
+  public static function DTOArrayToJsonArray($dtoArray) {
+    $jsonArray = array();
+    
+    foreach($dtoArray as $dto)
+    {
+      array_push($jsonArray, BitweetServerFactory::DTOToJson($dto));
+    }
+
+    return $jsonArray;
+  }
 }
 
 ?>

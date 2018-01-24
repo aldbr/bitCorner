@@ -70,6 +70,7 @@ $userControllerTest = new UserController();
 
 // ------------------------------------------------------------------------------- GET ONE
 //$user = $userControllerTest->getUser(435);
+//$user = $userControllerTest->getUser(12);
 //var_dump($user);
 //echo $user->getId() .'\n';
 //echo $user->getUsername() .'\n';
@@ -92,9 +93,9 @@ $userControllerTest = new UserController();
 
 
 // ------------------------------------------------------------------------------- CHECK CONNEXION
- $existingUser = $userControllerTest->connect("Username111", "Password111");
- $nonExistingUser = $userControllerTest->connect("Username111", "Password222");
+// $existingUser = $userControllerTest->connect("Username111", "Password111");
+// $nonExistingUser = $userControllerTest->connect("Username111", "Password222");
 
- var_dump($existingUser);
- var_dump($nonExistingUser);
+// var_dump($existingUser);
+// var_dump($nonExistingUser);
 ?>

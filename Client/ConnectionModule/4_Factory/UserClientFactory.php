@@ -54,9 +54,9 @@ class UserClientFactory {
   public static function JsonArrayToDTOArray($jsonArray)
   {
     $dtoArray = array();
-    foreach($jsonArray as $jsonUser)
+    foreach($jsonArray as $json)
     {
-      array_push($dtoArray,UserClientFactory::JsonToDTO($jsonUser));
+      array_push($dtoArray, UserClientFactory::JsonToDTO($json));
     }
     return $dtoArray;
   }

@@ -14,7 +14,7 @@ class BitweetPersistence {
     $query .= "message:'". $bitweet->getMessage() ."',";
     $query .= "nbVotes:'". $bitweet->getNbVotes() ."'";
     $query .= "}) ";
-    $query .= "CREATE (c)-[r2:CONTAINS]->(bitweet)";
+    $query .= "CREATE (c)-[r2:CONTAIN]->(bitweet)";
 
     $result = Persistence::run($query);
   }
@@ -28,7 +28,7 @@ class BitweetPersistence {
                       id(u) as idUser,
                       id(c) as idChannel";
     $result = Persistence::run($query);
-    
+    var_dump($query);
     return $this->readBitweetRecord($result->getRecord());
   }
 

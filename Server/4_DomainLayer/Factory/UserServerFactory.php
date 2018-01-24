@@ -57,17 +57,7 @@ class UserServerFactory {
     
     foreach($dtoArray as $dto)
     {
-      array_push(
-            $jsonArray, 
-            [
-              'id' => $dto->getId(),
-              'username' => $dto->getUsername(),
-              'password' => $dto->getPassword(),
-              'mail' => $dto->getMail(),
-              'nbFollowers' => $dto->getNbFollowers(),
-              'nbFollowing' => $dto->getNbFollowing(),
-              'bitweets' => $dto->getBitweets()
-            ]);
+      array_push($jsonArray, UserServerFactory::DTOToJson($dto));
     }
 
     return $jsonArray;

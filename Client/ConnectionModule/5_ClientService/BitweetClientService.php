@@ -9,7 +9,7 @@ class BitweetClientService {
 
   public function createBitweet($bitweetDTO) {
     $bitweetService = new BitweetService();
-    $params = json_encode(UserClientFactory::DTOToJson($bitweetDTO));
+    $params = json_encode(BitweetClientFactory::DTOToJson($bitweetDTO));
     $json = BitCornerWebService::callMethod('createBitweet',$params);
   }
 
@@ -46,7 +46,7 @@ class BitweetClientService {
     $json = BitCornerWebService::callMethod('getBitweetsFromUser',$params);
 
     $jsonArray = json_decode($json, true);
-    return BitweetClientFactory:::JsonArrayToDTOArray($jsonArray);
+    return BitweetClientFactory::JsonArrayToDTOArray($jsonArray);
   }
 
   public function getBitweetsFromChannel($idChannel) {
@@ -56,7 +56,7 @@ class BitweetClientService {
     $json = BitCornerWebService::callMethod('getBitweetsFromChannel',$params);
 
     $jsonArray = json_decode($json, true);
-    return BitweetClientFactory:::JsonArrayToDTOArray($jsonArray);
+    return BitweetClientFactory::JsonArrayToDTOArray($jsonArray);
   }
 }
 

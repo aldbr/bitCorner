@@ -19,26 +19,26 @@ class BitCornerWebService
 					BitweetWebService::deleteBitweet($params);
 					break;
 				case "getBitweet":
-					BitweetWebService::getBitweet($params);
+					return BitweetWebService::getBitweet($params);
 					break;
 				case "getBitweets":
-					BitweetWebService::getBitweets();
+					return BitweetWebService::getBitweets();
 					break;
 				case "getBitweetsFromUser":
-					BitweetWebService::getBitweetsFromUser($params);
+					return BitweetWebService::getBitweetsFromUser($params);
 					break;
 				case "getBitweetsFromChannel":
-					BitweetWebService::getBitweetsFromChannel($params);
+					return BitweetWebService::getBitweetsFromChannel($params);
 					break;
 
 				case "createChannel":
 					ChannelWebService::createChannel($params);
 					break;
 				case "getChannel":
-					ChannelWebService::getChannel($params);
+					return ChannelWebService::getChannel($params);
 					break;
 				case "getChannels":
-					ChannelWebService::getChannels();
+					return ChannelWebService::getChannels();
 					break;
 
 				case "createComment":
@@ -48,10 +48,10 @@ class BitCornerWebService
 					CommentWebService::deleteComment($params);
 					break;
 				case "getComment":
-					CommentWebService::getComment($params);
+					return CommentWebService::getComment($params);
 					break;
 				case "getComments":
-					CommentWebService::getComments($params);
+					return CommentWebService::getComments($params);
 					break;
 
 				case "createUser":
@@ -71,81 +71,7 @@ class BitCornerWebService
 					break;
 			}
 		}
-	}
-
-	// ---------------------------------------------------------------------------- USER
-	private static function createUser($params)
-	{
-		$userService = new UserService();
-		$jsonDecoded = json_decode($params, true);
-		$userDTO = UserServerFactory::JsonToDTO($jsonDecoded);
-
-		if($userDTO != NULL)
-		{
-			$userService->createUser($userDTO);
-		}
-		else
-		{
-			throw new Exception("Create user did not work");
-		}
-	}
-
-	private static function deleteUser($params)
-	{
-		$userService = new UserService();
-		$jsonDecoded = json_decode($params, true);
-
-		if(isset($jsonDecoded['id']))
-		{
-			$userDTO = $userService->deleteUser($jsonDecoded['id']);
-		}
-		else
-		{
-			throw new Exception("Delete user did not work");
-		}
-	}
-
-	private static function getUser($params)
-	{
-		$userService = new UserService();
-		$jsonDecoded = json_decode($params, true);
-
-		if(isset($jsonDecoded['id']))
-		{
-			$userDTO = $userService->getUser($jsonDecoded['id']);
-			$userJSON = UserServerFactory::DTOToJSON($userDTO);
-			return json_encode($userJSON);
-		}
-		else
-		{
-			return json_encode(NULL);
-		}
-	}
-
-	private static function getUsers()
-	{
-		$userService = new UserService();
-		$userDTOs = $userService->getUsers();
-		$jsonArray = UserServerFactory::DTOArrayToJsonArray($userDTOs);
-		return json_encode($jsonArray);
-	}
-
-	private static function connect($params)
-	{
-		$userService = new UserService();
-		$jsonDecoded = json_decode($params, true);
-
-		if(isset($jsonDecoded['username']) && isset($jsonDecoded['password']))
-		{
-			$isConnected = $userService->connect($jsonDecoded['username'],$jsonDecoded['password']);
-			$resultArray = ['isConnected' => $isConnected];
-			return json_encode($resultArray);
-		}
-		else
-		{
-			return json_encode(['isConnected' => false]);
-		}
-	}
+	}	
 }
 
 ?>

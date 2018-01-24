@@ -9,11 +9,11 @@ class CommentClientService {
 
   public function createComment($commentDTO){
     $commentService = new CommentService();
-    $params = json_encode(ChannelClientFactory::DTOToJson($bitweetDTO));
+    $params = json_encode(CommentClientFactory::DTOToJson($commentDTO));
     $json = BitCornerWebService::callMethod('createComment',$params);
   }
 
-  public function deleteBitweet($id) {
+  public function deleteComment($id) {
     $commentService = new CommentService();
     $params = json_encode(['id' => $id]);
     $json = BitCornerWebService::callMethod('deleteComment',$params);
@@ -33,11 +33,12 @@ class CommentClientService {
 
   public function getComments($userId = NULL) {
   	$commentService = new CommentService();
-    $params = json_encode(['userId' => $id]);
+    $params = json_encode(['userId' => $userId]);
 
     $json = BitCornerWebService::callMethod('getComments', $params);
-
+    
     $jsonArray = json_decode($json, true);
+
     return CommentClientFactory::JsonArrayToDTOArray($jsonArray);
   }
 

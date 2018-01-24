@@ -10,6 +10,7 @@ class ChannelClientFactory {
 
     $channelModel->setId($dto->getId());
     $channelModel->setBitweets($dto->getBitweets());
+
     return $channelModel;
   }
 
@@ -24,9 +25,9 @@ class ChannelClientFactory {
   public static function DTOToJson($dto) {
     return [
             'id' => $dto->getId(),
-            'title' => $dto->getMessage(),
-            'bitweets' => $dto->getNbVotes()
-          ];
+            'title' => $dto->getTitle(),
+            'bitweets' => $dto->getBitweets()
+           ];
   }
 
   public static function JsonToDTO($json) {
@@ -34,6 +35,16 @@ class ChannelClientFactory {
       $json['id'],
       $json['title'],
       $json['bitweets']);
+  }
+
+  public static function JsonArrayToDTOArray($jsonArray)
+  {
+    $dtoArray = array();
+    foreach($jsonArray as $json)
+    {
+      array_push($dtoArray, ChannelClientFactory::JsonToDTO($json));
+    }
+    return $dtoArray;
   }
 }
 

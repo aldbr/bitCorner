@@ -43,23 +43,27 @@ class ChannelController {
 
 //Simulate a call from a view
 $channelControllerTest = new ChannelController();
-$channelModel1 = new ChannelModel("btc");
-$channelModel2 = new ChannelModel("eth");
-$channelModel3 = new ChannelModel("doge");
+
+// ------------------------------------------------------------------------------- CREATE
+//$channelModel1 = new ChannelModel("btc");
+//$channelModel2 = new ChannelModel("eth");
+//$channelModel3 = new ChannelModel("doge");
 //$channelControllerTest->createChannel($channelModel1);
 //$channelControllerTest->createChannel($channelModel2);
 //$channelControllerTest->createChannel($channelModel3);
 
-//$result = $channelControllerTest->getChannel(549);
+// ------------------------------------------------------------------------------- GET ONE
+//$result = $channelControllerTest->getChannel(252);
 //var_dump($result);
 
-//$result = $channelControllerTest->getChannels();
-//echo 'There are '.count($result).' channels<br/>';
+// ------------------------------------------------------------------------------- GET ALL
+// $result = $channelControllerTest->getChannels();
+// echo 'There are '.count($result).' channels<br/>';
 
-//if(is_array($result)) {
-//	foreach($result as $channel) {
+// if(is_array($result)) {
+// 	foreach($result as $channel) {
 //    echo '<pre>' . var_dump($channel) . '</pre>';
-		//echo $user->getId().' - '.$user->getUsername().'<br/>';
 // 	}
-//}
+// }
+
 ?>

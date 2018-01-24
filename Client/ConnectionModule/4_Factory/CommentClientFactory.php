@@ -42,6 +42,16 @@ class CommentClientFactory {
       $json['bitweetId'],
       $json['userId']);
   }
+
+  public static function JsonArrayToDTOArray($jsonArray)
+  {
+    $dtoArray = array();
+    foreach($jsonArray as $json)
+    {
+      array_push($dtoArray, CommentClientFactory::JsonToDTO($json));
+    }
+    return $dtoArray;
+  }
 }
 
 ?>

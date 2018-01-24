@@ -36,6 +36,17 @@ class ChannelServerFactory {
       $json['title'],
       $json['bitweets']);
   }
+
+  public static function DTOArrayToJsonArray($dtoArray) {
+    $jsonArray = array();
+    
+    foreach($dtoArray as $dto)
+    {
+      array_push($jsonArray, ChannelServerFactory::DTOToJson($dto));
+    }
+
+    return $jsonArray;
+  }
 }
 
 ?>

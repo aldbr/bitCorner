@@ -53,13 +53,12 @@ class CommentWebService
 	public static function getComments($params)
 	{
 		$commentService = new CommentService();
-    $jsonDecoded = json_decode($params, true);
-
-		if(isset($jsonDecoded['userId']))
+    	$jsonDecoded = json_decode($params, true);
+		if(array_key_exists('userId', $jsonDecoded))
 		{
 			$commentDTOs = $commentService->getComments($jsonDecoded['userId']);
-      $jsonArray = CommentServerFactory::DTOArrayToJsonArray($commentDTOs);
-  		return json_encode($jsonArray);
+      		$jsonArray = CommentServerFactory::DTOArrayToJsonArray($commentDTOs);
+  			return json_encode($jsonArray);
 		}
 		else
 		{

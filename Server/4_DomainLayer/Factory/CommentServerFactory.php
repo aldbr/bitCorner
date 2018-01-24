@@ -44,6 +44,17 @@ class CommentServerFactory {
       $json['userId']);
   }
 
+  public static function DTOArrayToJsonArray($dtoArray) {
+    $jsonArray = array();
+    
+    foreach($dtoArray as $dto)
+    {
+      array_push($jsonArray, CommentServerFactory::DTOToJson($dto));
+    }
+
+    return $jsonArray;
+  }
+
 }
 
 ?>

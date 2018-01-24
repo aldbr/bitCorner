@@ -9,7 +9,7 @@ class ChannelClientService {
 
   public function createChannel($channelDTO){
     $channelService = new ChannelService();
-    $params = json_encode(ChannelClientFactory::DTOToJson($bitweetDTO));
+    $params = json_encode(ChannelClientFactory::DTOToJson($channelDTO));
     $json = BitCornerWebService::callMethod('createChannel',$params);
   }
 

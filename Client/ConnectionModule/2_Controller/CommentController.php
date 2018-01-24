@@ -61,7 +61,7 @@ $commentControllerTest = new CommentController();
 
 // ------------------------------------------------------------------------------- CREATE
 
-// $comment1 = new CommentModel("my_first_commentary",10,276);
+// $comment1 = new CommentModel("my_first_commentary",10,12);
 // $comment2 = new CommentModel("commentaire2",10,263);
 // $comment3 = new CommentModel("commentaire3",10,276);
 // $commentControllerTest->createComment($comment1);
@@ -70,11 +70,12 @@ $commentControllerTest = new CommentController();
 
 // ------------------------------------------------------------------------------- GET ONE
 //$comment = $commentControllerTest->getComment(642);
+//$comment = $commentControllerTest->getComment(311);
 //var_dump($comment);
 
 // ------------------------------------------------------------------------------- GET ALL FROM USER ID
 
-// $result = $commentControllerTest->getComments(276);
+// $result = $commentControllerTest->getComments(272);
 // echo 'There are '.count($result).' comments<basename(path)r/>';
 
 // if(is_array($result)) {

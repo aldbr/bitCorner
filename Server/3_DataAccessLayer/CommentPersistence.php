@@ -35,7 +35,7 @@ class CommentPersistence {
 
     $result = Persistence::run($query);
     $record = $result->getRecord();
-
+    
     return $this->readCommentRecord($record);
   }
 
@@ -51,13 +51,14 @@ class CommentPersistence {
                c.nbVotes as nbVotes,
                id(b) as bitweetId,
                id(u) as userId";
-
+    
     $result = Persistence::run($query);
     $commentEntities = array();
 
     foreach ($result->getRecords() as $record) {
       array_push($commentEntities,$this->readCommentRecord($record));
     }
+    
     return $commentEntities;
   }
 
