@@ -9,14 +9,13 @@ class UserClientService {
 
   public function createUser($userDTO){
     $userService = new UserService();
-    $params = json_encode(UserClientFactory::DTOToJson($userDTO));    
+    $params = json_encode(UserClientFactory::DTOToJson($userDTO));
     $json = BitCornerWebService::callMethod('createUser',$params);
-
   }
 
   public function deleteUser($id) {
     $userService = new UserService();
-    $params = json_encode(['id' => $id]);   
+    $params = json_encode(['id' => $id]);
     $json = BitCornerWebService::callMethod('deleteUser',$params);
   }
 
@@ -25,7 +24,7 @@ class UserClientService {
   public function getUser($id) {
   	$userService = new UserService();
     $params = json_encode(['id' => $id]);
-    
+
     $json = BitCornerWebService::callMethod('getUser',$params);
 
     $jsonArray = json_decode($json, true);
@@ -36,7 +35,7 @@ class UserClientService {
   	$userService = new UserService();
 
     $json = BitCornerWebService::callMethod('getUsers');
-   
+
     $jsonArray = json_decode($json, true);
     return UserClientFactory::JsonArrayToDTOArray($jsonArray);
   }
@@ -44,7 +43,7 @@ class UserClientService {
   public function connect($username, $password) {
     $userService = new UserService();
     $params = json_encode(['username' => $username, 'password' => $password]);
-    
+
     $json = BitCornerWebService::callMethod('connect',$params);
     
     $jsonArray = json_decode($json, true);

@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 class BitCornerWebService
 {
@@ -7,65 +7,67 @@ class BitCornerWebService
 		//if(isset($_REQUEST['action']))
 		if(isset($action))
 		{
-			$bitweetService = new BitweetService();
-			$channelService = new ChannelService();
-			$commentService = new CommentService();
-			$userService = new UserService();
 
 			//if(isset($_REQUEST['params']))
 
 			switch($action)
 			{
 				case "createBitweet":
-					$bitweetService->createBitweet($bitweetDTO);
+					BitweetWebService::createBitweet($params);
+					break;
+				case "deleteBitweet":
+					BitweetWebService::deleteBitweet($params);
 					break;
 				case "getBitweet":
-					$bitweetService->getBitweet($id);
+					BitweetWebService::getBitweet($params);
 					break;
 				case "getBitweets":
-					$bitweetService->getBitweets();
+					BitweetWebService::getBitweets();
 					break;
 				case "getBitweetsFromUser":
-					$bitweetService->getBitweetsFromUser($idUser);
+					BitweetWebService::getBitweetsFromUser($params);
 					break;
 				case "getBitweetsFromChannel":
-					$bitweetService->getBitweetsFromChannel($idChannel);
+					BitweetWebService::getBitweetsFromChannel($params);
 					break;
 
 				case "createChannel":
-					$channelService->createChannel($channelDTO);
+					ChannelWebService::createChannel($params);
 					break;
 				case "getChannel":
-					$channelService->getChannel($id);
+					ChannelWebService::getChannel($params);
 					break;
 				case "getChannels":
-					$channelService->getChannels();
+					ChannelWebService::getChannels();
 					break;
 
 				case "createComment":
-					$commentService->createComment($commentDTO);
+					CommentWebService::createComment($params);
+					break;
+				case "deleteComment":
+					CommentWebService::deleteComment($params);
 					break;
 				case "getComment":
-					$commentService->getComment($id);
+					CommentWebService::getComment($params);
 					break;
 				case "getComments":
-					$commentService->getComments($userId = NULL);
+					CommentWebService::getComments($params);
 					break;
 
 				case "createUser":
-					BitCornerWebService::createUser($params);
+					UserWebService::createUser($params);
 					break;
 				case "deleteUser":
-					BitCornerWebService::deleteUser($params);
+					UserWebService::deleteUser($params);
 					break;
 				case "getUser":
-					return BitCornerWebService::getUser($params);
+					return UserWebService::getUser($params);
 					break;
 				case "getUsers":
-					return BitCornerWebService::getUsers();
+					return UserWebService::getUsers();
 					break;
 				case "connect":
-					return BitCornerWebService::connect($params);
+					return UserWebService::connect($params);
 					break;
 			}
 		}
@@ -145,8 +147,5 @@ class BitCornerWebService
 		}
 	}
 }
-
-
-
 
 ?>

@@ -78,6 +78,8 @@ $bitModel3 = new BitweetModel("bit3", 435, 437);
 //$bitweetControllerTest->createBitweet($bitModel2);
 //$bitweetControllerTest->createBitweet($bitModel3);
 
+//$result = $bitweetControllerTest->getBitweet(437);
+//var_dump($result);
 //$result = $bitweetControllerTest->getBitweets();
 //echo 'There are '.count($result).' bitweets<br/>';
 
@@ -88,7 +90,7 @@ $bitModel3 = new BitweetModel("bit3", 435, 437);
 //	}
 //}
 
-$bitweetControllerTest->deleteBitweet(621);
+//$bitweetControllerTest->deleteBitweet(621);
 
 //$result = $bitweetControllerTest->getBitweet(621);
 //echo '<pre>' . var_dump($result) . '</pre>';

@@ -9,34 +9,54 @@ class BitweetClientService {
 
   public function createBitweet($bitweetDTO) {
     $bitweetService = new BitweetService();
-    $bitweetService->createBitweet($bitweetDTO);
+    $params = json_encode(UserClientFactory::DTOToJson($bitweetDTO));
+    $json = BitCornerWebService::callMethod('createBitweet',$params);
   }
 
   public function deleteBitweet($id) {
     $bitweetService = new BitweetService();
-    $bitweetService->deleteBitweet($id);
+    $params = json_encode(['id' => $id]);
+    $json = BitCornerWebService::callMethod('deleteBitweet',$params);
   }
 
   // -------------------- Setters --------------------------------
 
   public function getBitweet($id) {
   	$bitweetService = new BitweetService();
-    return $bitweetService->getBitweet($id);
+    $params = json_encode(['id' => $id]);
+
+    $json = BitCornerWebService::callMethod('getBitweet',$params);
+
+    $jsonArray = json_decode($json, true);
+    return BitweetClientFactory::JsonToDTO($jsonArray);
   }
 
   public function getBitweets() {
   	$bitweetService = new BitweetService();
-    return $bitweetService->getBitweets();
+    $json = BitCornerWebService::callMethod('getBitweets');
+
+    $jsonArray = json_decode($json, true);
+    return BitweetClientFactory::JsonArrayToDTOArray($jsonArray);
   }
 
   public function getBitweetsFromUser($idUser) {
   	$bitweetService = new BitweetService();
-    return $bitweetService->getBitweetsFromUser($idUser);
+    $params = json_encode(['idUser' => $idUser]);
+
+    $json = BitCornerWebService::callMethod('getBitweetsFromUser',$params);
+
+    $jsonArray = json_decode($json, true);
+    return BitweetClientFactory:::JsonArrayToDTOArray($jsonArray);
   }
 
   public function getBitweetsFromChannel($idChannel) {
   	$bitweetService = new BitweetService();
-    return $bitweetService->getBitweetsFromChannel($idChannel);
+    $params = json_encode(['idChannel' => $idChannel]);
+
+    $json = BitCornerWebService::callMethod('getBitweetsFromChannel',$params);
+
+    $jsonArray = json_decode($json, true);
+    return BitweetClientFactory:::JsonArrayToDTOArray($jsonArray);
   }
 }
 

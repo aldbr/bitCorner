@@ -69,7 +69,7 @@ $userControllerTest = new UserController();
 //$userControllerTest->createUser($userModel3);
 
 // ------------------------------------------------------------------------------- GET ONE
-$user = $userControllerTest->getUser(12);
+//$user = $userControllerTest->getUser(435);
 //var_dump($user);
 //echo $user->getId() .'\n';
 //echo $user->getUsername() .'\n';
