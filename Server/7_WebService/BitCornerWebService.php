@@ -128,7 +128,7 @@ class BitCornerWebService
 		return json_encode($jsonArray);
 	}
 
-	private static function coonect($params)
+	private static function connect($params)
 	{
 		$userService = new UserService();
 		$jsonDecoded = json_decode($params, true);
@@ -141,7 +141,7 @@ class BitCornerWebService
 		}
 		else
 		{
-			return ['isConnected' => false];
+			return json_encode(['isConnected' => false]);
 		}
 	}
 }

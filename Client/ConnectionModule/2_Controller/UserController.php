@@ -92,9 +92,9 @@ $user = $userControllerTest->getUser(12);
 
 
 // ------------------------------------------------------------------------------- CHECK CONNEXION
-// $existingUser = $userControllerTest->connect("Username111", "Password111");
-// $nonExistingUser = $userControllerTest->connect("Username111", "Password222");
+ $existingUser = $userControllerTest->connect("Username111", "Password111");
+ $nonExistingUser = $userControllerTest->connect("Username111", "Password222");
 
-// var_dump($existingUser);
-// var_dump($nonExistingUser);
+ var_dump($existingUser);
+ var_dump($nonExistingUser);
 ?>

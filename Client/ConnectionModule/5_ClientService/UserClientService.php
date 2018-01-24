@@ -43,15 +43,18 @@ class UserClientService {
 
   public function connect($username, $password) {
     $userService = new UserService();
-    return $userService->connect($username, $password);
-
-    $userService = new UserService();
     $params = json_encode(['username' => $username, 'password' => $password]);
     
     $json = BitCornerWebService::callMethod('connect',$params);
-
+    
     $jsonArray = json_decode($json, true);
-    return 'TODO';
+    
+    if(isset($jsonArray['isConnected']))
+    {      
+      return $jsonArray['isConnected'];
+    }
+
+    return false;
   }
 
 }
