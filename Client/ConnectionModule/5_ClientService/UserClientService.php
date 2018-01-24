@@ -9,30 +9,49 @@ class UserClientService {
 
   public function createUser($userDTO){
     $userService = new UserService();
-    $userService->createUser($userDTO);
+    $params = json_encode(UserClientFactory::DTOToJson($userDTO));    
+    $json = BitCornerWebService::callMethod('createUser',$params);
+
   }
 
-  public function deleteBitweet($id) {
+  public function deleteUser($id) {
     $userService = new UserService();
-    $userService->deleteUser($id);
+    $params = json_encode(['id' => $id]);   
+    $json = BitCornerWebService::callMethod('deleteUser',$params);
   }
 
   // -------------------- Getters --------------------------------
 
   public function getUser($id) {
   	$userService = new UserService();
-    $jsonArray = json_decode($userService->getUser($id), true);
+    $params = json_encode(['id' => $id]);
+    
+    $json = BitCornerWebService::callMethod('getUser',$params);
+
+    $jsonArray = json_decode($json, true);
     return UserClientFactory::JsonToDTO($jsonArray);
   }
 
   public function getUsers() {
   	$userService = new UserService();
-    return $userService->getUsers();
+
+    $json = BitCornerWebService::callMethod('getUsers');
+   
+    $jsonArray = json_decode($json, true);
+    return UserClientFactory::JsonArrayToDTOArray($jsonArray);
   }
 
   public function connect($username, $password) {
     $userService = new UserService();
     return $userService->connect($username, $password);
+
+    $userService = new UserService();
+    $params = json_encode(['username' => $username, 'password' => $password]);
+    
+    $json = BitCornerWebService::callMethod('connect',$params);
+
+    $jsonArray = json_decode($json, true);
+    return 'TODO';
   }
 
 }

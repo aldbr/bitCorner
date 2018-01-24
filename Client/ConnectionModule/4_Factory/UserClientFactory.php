@@ -29,13 +29,15 @@ class UserClientFactory {
   }
 
   public static function DTOToJson($dto) {
-    return ['id' => $dto->getId(),
+    return [
+            'id' => $dto->getId(),
             'username' => $dto->getUsername(),
             'password' => $dto->getPassword(),
             'mail' => $dto->getMail(),
             'nbFollowers' => $dto->getNbFollowers(),
             'nbFollowing' => $dto->getNbFollowing(),
-            'bitweets' => $dto->getBitweets()];
+            'bitweets' => $dto->getBitweets()
+          ];
   }
 
   public static function JsonToDTO($json) {
@@ -47,6 +49,16 @@ class UserClientFactory {
       $json['nbFollowers'],
       $json['nbFollowing'],
       $json['bitweets']);
+  }
+
+  public static function JsonArrayToDTOArray($jsonArray)
+  {
+    $dtoArray = array();
+    foreach($jsonArray as $jsonUser)
+    {
+      array_push($dtoArray,UserClientFactory::JsonToDTO($jsonUser));
+    }
+    return $dtoArray;
   }
 }
 

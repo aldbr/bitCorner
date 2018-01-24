@@ -26,11 +26,13 @@ class CommentServerFactory {
   }
 
   public static function DTOToJson($dto) {
-    return ['id' => $dto->getId(),
+    return [
+            'id' => $dto->getId(),
             'message' => $dto->getMessage(),
             'nbVotes' => $dto->getNbVotes(),
             'bitweetId' => $dto->getBitweetId(),
-            'userId' => $dto->getUserId()];
+            'userId' => $dto->getUserId()
+          ];
   }
 
   public static function JsonToDTO($json) {

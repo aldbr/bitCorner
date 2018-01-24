@@ -21,8 +21,7 @@ class UserService {
 
   public function getUser($id) {
   	$userAppService = new UserAppService();
-    $jsonArray = UserServerFactory::DTOToJson($userAppService->getUser($id));
-    return json_encode($jsonArray);
+    return $userAppService->getUser($id);
   }
 
   public function getUsers() {

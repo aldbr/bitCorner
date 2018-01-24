@@ -63,13 +63,18 @@ class CommentPersistence {
 
   public function readCommentRecord($record)
   {
+    if($record == NULL)
+    {
+      return NULL;
+    }
+    
     return new CommentEntity(
         $record->value('id'),
         $record->value('message'),
         $record->value('nbVotes'),
         $record->value('bitweetId'),
         $record->value('userId')
-      );
+    );
   }
 
   public function updateMessage($id) {
