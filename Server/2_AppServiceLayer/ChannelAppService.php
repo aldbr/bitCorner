@@ -13,29 +13,29 @@ class ChannelAppService {
 
   public function __construct()
   {
-    $this->$channelPersistence = new ChannelPersistence();
+    $this->channelPersistence = new ChannelPersistence();
   }
   
   // -------------------- Setters --------------------------------
 
   public function createChannel($channelDTO){
   	$channelEntity = ChannelServerFactory::DTOToEntity($channelDTO);
-  	$this->$channelPersistence->createChannel($channelEntity);
+  	$this->channelPersistence->createChannel($channelEntity);
   }
 
   public function deleteChannel($id){
-  	$this->$channelPersistence->deleteChannel($id);
+  	$this->channelPersistence->deleteChannel($id);
   }
 
   // -------------------- Getters --------------------------------
 
   public function getChannel($id) {
-  	$channelEntity = $this->$channelPersistence->getChannel($id);
+  	$channelEntity = $this->channelPersistence->getChannel($id);
     return ChannelServerFactory::EntityToDTO($channelEntity);
   }
 
   public function getChannels() {
-  	$channelEntities = $this->$channelPersistence->getChannels();
+  	$channelEntities = $this->channelPersistence->getChannels();
   	$channelDTOs = array();
 
   	if(is_array($channelEntities)) {

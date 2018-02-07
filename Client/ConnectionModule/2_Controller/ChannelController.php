@@ -57,13 +57,13 @@ $channelControllerTest = new ChannelController();
 //var_dump($result);
 
 // ------------------------------------------------------------------------------- GET ALL
-// $result = $channelControllerTest->getChannels();
-// echo 'There are '.count($result).' channels<br/>';
+$result = $channelControllerTest->getChannels();
+echo 'There are '.count($result).' channels<br/>';
 
-// if(is_array($result)) {
-// 	foreach($result as $channel) {
-//    echo '<pre>' . var_dump($channel) . '</pre>';
-// 	}
-// }
+if(is_array($result)) {
+	foreach($result as $channel) {
+   echo '<pre>' . var_dump($channel) . '</pre>';
+	}
+}
 
 ?>

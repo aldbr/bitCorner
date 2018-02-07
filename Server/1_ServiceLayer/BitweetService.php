@@ -13,38 +13,38 @@ class BitweetService {
 
   public function __construct()
   {
-    $this->$bitweetAppService = new BitweetAppService();
+    $this->bitweetAppService = new BitweetAppService();
   }
 
   // -------------------- Setters --------------------------------
 
   public function createBitweet($bitweetDTO) {
-    $this->$bitweetAppService->createBitweet($bitweetDTO);
+    $this->bitweetAppService->createBitweet($bitweetDTO);
   }
 
   public function deleteBitweet($id) {
-    $this->$bitweetAppService->deleteBitweet($id);
+    $this->bitweetAppService->deleteBitweet($id);
   }
 
   // -------------------- Getters --------------------------------
 
   public function getBitweet($id) {
-    return $this->$bitweetAppService->getBitweet($id);
+    return $this->bitweetAppService->getBitweet($id);
   }
 
   public function getBitweets() {
   	$bitweetAppService = new BitweetAppService();
-    return $this->$bitweetAppService->getBitweets();
+    return $this->bitweetAppService->getBitweets();
   }
 
   public function getBitweetsFromUser($idUser) {
   	$bitweetAppService = new BitweetAppService();
-    return $this->$bitweetAppService->getBitweetsFromUser($idUser);
+    return $this->bitweetAppService->getBitweetsFromUser($idUser);
   }
 
   public function getBitweetsFromChannel($idChannel) {
   	$bitweetAppService = new BitweetAppService();
-    return $this->$bitweetAppService->getBitweetsFromChannel($idChannel);
+    return $this->bitweetAppService->getBitweetsFromChannel($idChannel);
   }
 }
 

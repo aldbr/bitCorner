@@ -13,29 +13,29 @@ class CommentAppService {
 
   public function __construct()
   {
-    $this->$commentPersistence = new CommentPersistence();
+    $this->commentPersistence = new CommentPersistence();
   }
 
   // -------------------- Setters --------------------------------
 
   public function createComment($commentDTO){
   	$commentEntity = CommentServerFactory::DTOToEntity($commentDTO);
-  	$this->$commentPersistence->createComment($commentEntity);
+  	$this->commentPersistence->createComment($commentEntity);
   }
 
   public function deleteComment($id){
-  	$this->$commentPersistence->deleteComment($id);
+  	$this->commentPersistence->deleteComment($id);
   }
 
   // -------------------- Getters --------------------------------
 
   public function getComment($id) {
-  	$commentEntity = $this->$commentPersistence->getComment($id);
+  	$commentEntity = $this->commentPersistence->getComment($id);
     return CommentServerFactory::EntityToDTO($commentEntity);
   }
 
   public function getComments($userId) {
-  	$commentEntities = $this->$commentPersistence->getComments($userId);
+  	$commentEntities = $this->commentPersistence->getComments($userId);
   	$commentDTOs = array();
 
     if(is_array($commentEntities)) {

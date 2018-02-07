@@ -11,4 +11,6 @@ Autoload::load();
 //include (__DIR__ . '/../Client/ConnectionModule/2_Controller/CommentController.php');
 //include (__DIR__ . '/../Client/ConnectionModule/2_Controller/ChannelController.php');
 
+include (__DIR__ . '/BitCornerWebServiceHttp.php');
+
 ?>

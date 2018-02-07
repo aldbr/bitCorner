@@ -13,31 +13,31 @@ class UserService {
 
   public function __construct()
   {
-    $this->$userAppService = new UserAppService();
+    $this->userAppService = new UserAppService();
   }
 
   // -------------------- Setters --------------------------------
 
   public function createUser($userDTO){
-    $this->$userAppService->createUser($userDTO);
+    $this->userAppService->createUser($userDTO);
   }
 
   public function deleteUser($id) {
-    $this->$userAppService->deleteUser($id);
+    $this->userAppService->deleteUser($id);
   }
 
   // -------------------- Getters --------------------------------
 
   public function getUser($id) {
-    return $this->$userAppService->getUser($id);
+    return $this->userAppService->getUser($id);
   }
 
   public function getUsers() {
-    return $this->$userAppService->getUsers();
+    return $this->userAppService->getUsers();
   }
 
   public function connect($username, $password) {
-    return $this->$userAppService->connect($username, $password);
+    return $this->userAppService->connect($username, $password);
   }
   
 }

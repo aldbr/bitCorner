@@ -13,27 +13,27 @@ class ChannelService {
 
   public function __construct()
   {
-    $this->$channelAppService = new ChannelAppService();
+    $this->channelAppService = new ChannelAppService();
   }
 
   // -------------------- Setters --------------------------------
 
   public function createChannel($channelDTO){
-    $this->$channelAppService->createChannel($channelDTO);
+    $this->channelAppService->createChannel($channelDTO);
   }
 
   public function deleteChannel($id) {
-    $this->$channelAppService->deleteChannel($id);
+    $this->channelAppService->deleteChannel($id);
   }
 
   // -------------------- Getters --------------------------------
 
   public function getChannel($id) {
-    return $this->$channelAppService->getChannel($id);
+    return $this->channelAppService->getChannel($id);
   }
 
   public function getChannels() {
-    return $this->$channelAppService->getChannels();
+    return $this->channelAppService->getChannels();
   }
 }
 
