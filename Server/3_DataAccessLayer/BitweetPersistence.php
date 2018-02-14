@@ -43,7 +43,7 @@ class BitweetPersistence {
     $bitweetEntities = array();
 
     foreach ($result->getRecords() as $record) {
-      array_push($bitweetEntities, $this->readBitweetRecord($record));
+      array_push($bitweetEntities,  $this->readBitweetRecord($record));
     }
     return $bitweetEntities;
   }
