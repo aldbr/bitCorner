@@ -28,7 +28,6 @@ class BitweetPersistence {
                       id(u) as idUser,
                       id(c) as idChannel";
     $result = Persistence::run($query);
-    var_dump($query);
     return $this->readBitweetRecord($result->getRecord());
   }
 
@@ -103,7 +102,7 @@ class BitweetPersistence {
     {
       return NULL;
     }
-    
+
     return new BitweetEntity(
       $record->value('id'),
       $record->value('message'),

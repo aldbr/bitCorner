@@ -8,7 +8,7 @@ use PHPUnit\Framework\TestCase;
 class CommentEntityTest extends TestCase {
 
   public function testMessage() {
-    $comment = new CommentEntity("message", 0);
+    $comment = new CommentEntity(0, "message", 0, array(), 0);
     // Get
     $this->assertEquals("message", $comment->getMessage());
     // Set
@@ -17,7 +17,7 @@ class CommentEntityTest extends TestCase {
   }
 
   public function testVotes() {
-    $comment = new CommentEntity("message", 0);
+    $comment = new CommentEntity(0, "message", 0, array(), 0);
     // Get
     $this->assertEquals(0, $comment->getNbVotes());
     // Set

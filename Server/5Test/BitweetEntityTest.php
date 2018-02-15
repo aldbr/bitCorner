@@ -8,7 +8,7 @@ use PHPUnit\Framework\TestCase;
 class BitweetEntityTest extends TestCase {
 
   public function testMessage() {
-    $bitweet = new BitweetEntity("message");
+    $bitweet = new BitweetEntity(0, "message", 0, array(), 0, 0);
     // Get
     $this->assertEquals("message", $bitweet->getMessage());
     // Set
@@ -17,7 +17,7 @@ class BitweetEntityTest extends TestCase {
   }
 
   public function testVotes() {
-    $bitweet = new BitweetEntity("message");
+    $bitweet = new BitweetEntity(0, "message", 0, array(), 0, 0);
     // Get
     $this->assertEquals(0, $bitweet->getNbVotes());
     // Set

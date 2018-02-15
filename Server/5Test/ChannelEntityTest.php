@@ -8,7 +8,7 @@ use PHPUnit\Framework\TestCase;
 class ChannelEntityTest extends TestCase {
 
   public function testTitle() {
-    $channel = new ChannelEntity("bitcoin");
+    $channel = new ChannelEntity(0, "bitcoin", array());
     // Get
     $this->assertEquals("bitcoin", $channel->getTitle());
     // Set
