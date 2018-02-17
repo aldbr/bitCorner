@@ -52,9 +52,14 @@ class UserPersistence {
     $query = "MATCH (u:User)
               WHERE u.username = \"".$username."\" 
               AND   u.password = \"".$password."\"
-              RETURN u";
+              RETURN id(u) as id,
+                     u.username as username,
+                     u.password as password,
+                     u.mail as mail,
+                     u.nbFollowers as nbFollowers,
+                     u.nbFollowing as nbFollowing";
     $result = Persistence::run($query);
-    return $result->getRecord()!=null;
+    return $this->readUserRecord($result->getRecord());
   }
   
   public function updateUsername($id, $newUsername) {

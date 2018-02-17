@@ -47,7 +47,12 @@ class UserAppService {
   }
 
   public function connect($username, $password) {
-    return $this->userPersistence->connect($username, $password);
+    $userEntity = $this->userPersistence->connect($username, $password);
+    if($userEntity == NULL)
+    {
+      return NULL;
+    }
+    return UserServerFactory::EntityToDTO($userEntity);
 	}
 }
 

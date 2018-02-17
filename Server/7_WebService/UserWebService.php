@@ -44,10 +44,8 @@ class UserWebService
 			$userJSON = UserServerFactory::DTOToJSON($userDTO);
 			return json_encode($userJSON);
 		}
-		else
-		{
-			return json_encode(NULL);
-		}
+
+		return json_encode(NULL);
 	}
 
 	public static function getUsers()
@@ -65,14 +63,15 @@ class UserWebService
 
 		if(isset($jsonDecoded['username']) && isset($jsonDecoded['password']))
 		{
-			$isConnected = $userService->connect($jsonDecoded['username'],$jsonDecoded['password']);
-			$resultArray = ['isConnected' => $isConnected];
-			return json_encode($resultArray);
+			$userDTO = $userService->connect($jsonDecoded['username'], $jsonDecoded['password']);
+			if($userDTO != NULL)
+			{				
+				$userJSON = UserServerFactory::DTOToJSON($userDTO);
+				return json_encode($userJSON);
+			}
 		}
-		else
-		{
-			return ['isConnected' => false];
-		}
+
+		return json_encode(NULL);
 	}
 }
 
