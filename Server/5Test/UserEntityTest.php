@@ -8,7 +8,7 @@ use PHPUnit\Framework\TestCase;
 class UserEntityTest extends TestCase {
 
   public function testUsername() {
-    $user = new UserEntity("toto", "1234", "toto@yopmail.com");
+    $user = new UserEntity(0, "toto", "1234", "toto@yopmail.com", 0, 0, array());
     // Get
     $this->assertEquals("toto", $user->getUsername());
     // Set
@@ -17,7 +17,7 @@ class UserEntityTest extends TestCase {
   }
 
   public function testPassword() {
-    $user = new UserEntity("toto", "1234", "toto@yopmail.com");
+    $user = new UserEntity(0, "toto", "1234", "toto@yopmail.com", 0, 0, array());
     // Get
     $this->assertEquals("1234", $user->getPassword());
     // Set
@@ -26,7 +26,7 @@ class UserEntityTest extends TestCase {
   }
 
   public function testMail() {
-    $user = new UserEntity("toto", "1234", "toto@yopmail.com");
+    $user = new UserEntity(0, "toto", "1234", "toto@yopmail.com", 0, 0, array());
     // Get
     $this->assertEquals("toto@yopmail.com", $user->getMail());
     // Set
@@ -35,7 +35,7 @@ class UserEntityTest extends TestCase {
   }
 
   public function testNbFollowers() {
-    $user = new UserEntity("toto", "1234", "toto@yopmail.com");
+    $user = new UserEntity(0, "toto", "1234", "toto@yopmail.com", 0, 0, array());
     // Get
     $this->assertEquals(0, $user->getNbFollowers());
     // Set
@@ -48,7 +48,7 @@ class UserEntityTest extends TestCase {
   }
 
   public function testNbFollowing() {
-    $user = new UserEntity("toto", "1234", "toto@yopmail.com");
+    $user = new UserEntity(0, "toto", "1234", "toto@yopmail.com", 0, 0, array());
     // Get
     $this->assertEquals(0, $user->getNbFollowing());
     // Set
