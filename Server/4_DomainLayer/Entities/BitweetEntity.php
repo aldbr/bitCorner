@@ -64,6 +64,7 @@ class BitweetEntity {
 
   public function addComment($comment) {
     $this->comments[] = $comment;
+    var_dump($this->comments);
   }
 
   public function removeComment($index) {

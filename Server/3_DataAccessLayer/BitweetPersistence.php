@@ -32,18 +32,36 @@ class BitweetPersistence {
   }
 
   public function getBitweets() {
-    $query = "MATCH (u:User)-[r:WRITE]->(b:Bitweet), (c:Channel)-[r2:CONTAIN]->(b)
-              RETURN id(b) as id,
-                     b.message as message,
-                     b.nbVotes as nbVotes,
-                     id(u) as idUser,
-                     id(c) as idChannel";
+    $query = "MATCH (userBitweet:User)-[r:WRITE]->(bitweet:Bitweet), (channel:Channel)-[r2:CONTAIN]->(bitweet)
+              OPTIONAL MATCH (bitweet)-[r3:CONTAIN]->(comment:Comment), (userComment:User)-[r4:WRITE]->(comment)
+              RETURN id(bitweet) as idBitweet,
+                     bitweet.message as bitweetMessage,
+                     bitweet.nbVotes as nbVotes,
+                     userBitweet.username as bitweetUsername,
+                     comment.message as commentMessage,
+                     userComment.username as commentUsername,
+                     id(userBitweet) as idUser,
+                     id(channel) as idChannel,
+                     id(comment) as idComment";
     $result = Persistence::run($query);
     $bitweetEntities = array();
 
     foreach ($result->getRecords() as $record) {
-      array_push($bitweetEntities,  $this->readBitweetRecord($record));
+      $bitweetEntity = $this->readBitweetRecord($record);
+      $bitweetId = $bitweetEntity->getId();
+
+      if(!array_key_exists($bitweetId, $bitweetEntities))
+      {
+        $bitweetEntities[$bitweetId] = $bitweetEntity;
+      }
+      else
+      {
+        $bitweetEntity = $bitweetEntities[$bitweetId];
+      }
+
+      $this->addBitweetCommentRecord($record, $bitweetEntity);
     }
+
     return $bitweetEntities;
   }
 
@@ -104,13 +122,29 @@ class BitweetPersistence {
     }
 
     return new BitweetEntity(
-      $record->value('id'),
-      $record->value('message'),
+      $record->value('idBitweet'),
+      $record->value('bitweetMessage'),
       $record->value('nbVotes'),
       array(),
       $record->value('idUser'),
       $record->value('idChannel')
     );
+  }
+
+  public function addBitweetCommentRecord($record, $bitweet)
+  {
+    if($record != NULL && $record->value('idComment') != NULL)
+    {
+      $commentEntity = new CommentEntity(
+        $record->value('idComment'),
+        $record->value('commentMessage'),
+        0, //Comments vote not implemented yet      
+        $record->value('idBitweet'),
+        $record->value('idUser')
+      );
+
+      $bitweet->addComment($commentEntity);
+    }
   }
 }
 

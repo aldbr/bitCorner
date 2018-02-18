@@ -31,7 +31,7 @@ class BitweetServerFactory {
     return ['id' => $dto->getId(),
             'message' => $dto->getMessage(),
             'nbVotes' => $dto->getNbVotes(),
-            'comments' => $dto->getComments(),
+            'comments' => CommentServerFactory::DTOArrayToJsonArray($dto->getComments()),
             'idUser' => $dto->getIdUser(),
             'idChannel' => $dto->getIdChannel()];
   }
