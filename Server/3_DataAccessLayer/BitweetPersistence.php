@@ -20,7 +20,7 @@ class BitweetPersistence {
   }
 
   public function getBitweet($id) {
-    $query = "MATCH (u:User)-[r:WRITE]->(b:Bitweet), (c:Channel)-[r2:CONTAIN]->(b)
+    /*$query = "MATCH (u:User)-[r:WRITE]->(b:Bitweet), (c:Channel)-[r2:CONTAIN]->(b)
               WHERE id(b) = ".$id."
               RETURN  id(b) as id,
                       b.message as message,
@@ -28,11 +28,13 @@ class BitweetPersistence {
                       id(u) as idUser,
                       id(c) as idChannel";
     $result = Persistence::run($query);
-    return $this->readBitweetRecord($result->getRecord());
+    return $this->readBitweetRecord($result->getRecord());*/
+    return NULL;
   }
 
   public function getBitweets() {
     $query = "MATCH (userBitweet:User)-[r:WRITE]->(bitweet:Bitweet), (channel:Channel)-[r2:CONTAIN]->(bitweet)
+              WITH userBitweet, bitweet, channel
               OPTIONAL MATCH (bitweet)-[r3:CONTAIN]->(comment:Comment), (userComment:User)-[r4:WRITE]->(comment)
               RETURN id(bitweet) as idBitweet,
                      bitweet.message as bitweetMessage,
@@ -66,36 +68,74 @@ class BitweetPersistence {
   }
 
   public function getBitweetsFromUser($idUser) {
-    $query = "MATCH (u:User)-[r:WRITE]->(b:Bitweet), (c:Channel)-[r2:CONTAIN]->(b)
-              WHERE id(u) = ".$idUser."
-              RETURN  id(b) as id,
-                      b.message as message,
-                      b.nbVotes as nbVotes,
-                      id(u) as idUser,
-                      id(c) as idChannel";
+    $query = "MATCH (userBitweet:User)-[r:WRITE]->(bitweet:Bitweet), (channel:Channel)-[r2:CONTAIN]->(bitweet)
+              WHERE id(userBitweet) = ".$idUser."
+              WITH userBitweet, bitweet, channel
+              OPTIONAL MATCH (bitweet)-[r3:CONTAIN]->(comment:Comment), (userComment:User)-[r4:WRITE]->(comment)
+              RETURN id(bitweet) as idBitweet,
+                     bitweet.message as bitweetMessage,
+                     bitweet.nbVotes as nbVotes,
+                     userBitweet.username as bitweetUsername,
+                     comment.message as commentMessage,
+                     userComment.username as commentUsername,
+                     id(userBitweet) as idUser,
+                     id(channel) as idChannel,
+                     id(comment) as idComment";
     $result = Persistence::run($query);
     $bitweetEntities = array();
 
     foreach ($result->getRecords() as $record) {
-      array_push($bitweetEntities, $this->readBitweetRecord($record));
+      $bitweetEntity = $this->readBitweetRecord($record);
+      $bitweetId = $bitweetEntity->getId();
+
+      if(!array_key_exists($bitweetId, $bitweetEntities))
+      {
+        $bitweetEntities[$bitweetId] = $bitweetEntity;
+      }
+      else
+      {
+        $bitweetEntity = $bitweetEntities[$bitweetId];
+      }
+
+      $this->addBitweetCommentRecord($record, $bitweetEntity);
     }
+
     return $bitweetEntities;
   }
 
   public function getBitweetsFromChannel($idChannel) {
-    $query = "MATCH (u:User)-[r:WRITE]->(b:Bitweet), (c:Channel)-[r2:CONTAIN]->(b)
-              WHERE id(c) = ".$idChannel."
-              RETURN  id(b) as id,
-                      b.message as message,
-                      b.nbVotes as nbVotes,
-                      id(u) as idUser,
-                      id(c) as idChannel";
+    $query = "MATCH (userBitweet:User)-[r:WRITE]->(bitweet:Bitweet), (channel:Channel)-[r2:CONTAIN]->(bitweet)
+              WHERE id(channel) = ".$idChannel."
+              WITH userBitweet, bitweet, channel
+              OPTIONAL MATCH (bitweet)-[r3:CONTAIN]->(comment:Comment), (userComment:User)-[r4:WRITE]->(comment)
+              RETURN id(bitweet) as idBitweet,
+                     bitweet.message as bitweetMessage,
+                     bitweet.nbVotes as nbVotes,
+                     userBitweet.username as bitweetUsername,
+                     comment.message as commentMessage,
+                     userComment.username as commentUsername,
+                     id(userBitweet) as idUser,
+                     id(channel) as idChannel,
+                     id(comment) as idComment";
     $result = Persistence::run($query);
     $bitweetEntities = array();
 
     foreach ($result->getRecords() as $record) {
-      array_push($bitweetEntities, $this->readBitweetRecord($record));
+      $bitweetEntity = $this->readBitweetRecord($record);
+      $bitweetId = $bitweetEntity->getId();
+
+      if(!array_key_exists($bitweetId, $bitweetEntities))
+      {
+        $bitweetEntities[$bitweetId] = $bitweetEntity;
+      }
+      else
+      {
+        $bitweetEntity = $bitweetEntities[$bitweetId];
+      }
+
+      $this->addBitweetCommentRecord($record, $bitweetEntity);
     }
+
     return $bitweetEntities;
   }
 
