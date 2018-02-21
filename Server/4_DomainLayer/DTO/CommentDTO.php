@@ -10,6 +10,7 @@ class CommentDTO {
   private $nbVotes;
   private $bitweetId;
   private $userId;
+  private $username;
 
   public function __construct($id, $message, $nbVotes, $bitweetId, $userId) {
     $this->id = $id;
@@ -17,6 +18,7 @@ class CommentDTO {
     $this->nbVotes = $nbVotes;
     $this->bitweetId = $bitweetId;
     $this->userId = $userId;
+    $this->username = $username;
   }
 
   public function getId() {
@@ -37,6 +39,14 @@ class CommentDTO {
 
   public function getUserId() {
     return $this->userId;
+  }
+
+  public function getUsername() {
+    return $this->username;
+  }
+
+  public function setUsername($username) {
+    $this->username = $username;
   }
 }
 

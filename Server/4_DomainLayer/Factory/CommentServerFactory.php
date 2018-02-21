@@ -11,7 +11,8 @@ class CommentServerFactory {
   		$dto->getMessage(),
   		$dto->getNbVotes(),
       $dto->getBitweetId(),
-  		$dto->getUserId()
+  		$dto->getUserId(),
+      $dto->getUsername()
   	);
   }
 
@@ -21,7 +22,8 @@ class CommentServerFactory {
   		$entity->getMessage(),
   		$entity->getNbVotes(),
       $entity->getBitweetId(),
-  		$entity->getUserId()
+  		$entity->getUserId(),
+      $entity->getUsername()
   	);
   }
 
@@ -31,7 +33,8 @@ class CommentServerFactory {
             'message' => $dto->getMessage(),
             'nbVotes' => $dto->getNbVotes(),
             'bitweetId' => $dto->getBitweetId(),
-            'userId' => $dto->getUserId()
+            'userId' => $dto->getUserId(),
+            'username' => $dto->getUsername()
           ];
   }
 
@@ -41,12 +44,13 @@ class CommentServerFactory {
       $json['message'],
       $json['nbVotes'],
       $json['bitweetId'],
-      $json['userId']);
+      $json['userId'],
+      $json['username']);
   }
 
   public static function DTOArrayToJsonArray($dtoArray) {
     $jsonArray = array();
-    
+
     foreach($dtoArray as $dto)
     {
       array_push($jsonArray, CommentServerFactory::DTOToJson($dto));

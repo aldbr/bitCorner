@@ -11,15 +11,17 @@ class BitweetDTO {
   private $comments;
 
   private $idUser;
+  private $username;
   private $idChannel;
 
-  public function __construct($id, $message, $nbVotes, $comments, $idUser, $idChannel) {
+  public function __construct($id, $message, $nbVotes, $comments, $idUser, $username, $idChannel) {
     self::setId($id);
     self::setMessage($message);
     self::setNbVotes($nbVotes);
     self::setComments($comments);
 
     self::setIdUser($idUser);
+    self::setUsername($username);
     self::setIdChannel($idChannel);
   }
 
@@ -61,6 +63,14 @@ class BitweetDTO {
 
   public function setIdUser($idUser) {
     $this->idUser = $idUser;
+  }
+
+  public function getUsername() {
+    return $this->username;
+  }
+
+  public function setUsername($username) {
+    $this->username = $username;
   }
 
   public function getIdChannel() {

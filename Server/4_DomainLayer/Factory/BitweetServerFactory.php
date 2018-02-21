@@ -12,6 +12,7 @@ class BitweetServerFactory {
       $dto->getNbVotes(),
       $dto->getComments(),
       $dto->getIdUser(),
+      $dto->getUsername(),
       $dto->getIdChannel()
   	);
   }
@@ -23,6 +24,7 @@ class BitweetServerFactory {
       $entity->getNbVotes(),
       $entity->getComments(),
       $entity->getIdUser(),
+      $entity->getUsername(),
       $entity->getIdChannel()
   	);
   }
@@ -33,6 +35,7 @@ class BitweetServerFactory {
             'nbVotes' => $dto->getNbVotes(),
             'comments' => CommentServerFactory::DTOArrayToJsonArray($dto->getComments()),
             'idUser' => $dto->getIdUser(),
+            'username' => $dto->getUsername(),
             'idChannel' => $dto->getIdChannel()];
   }
 
@@ -43,12 +46,13 @@ class BitweetServerFactory {
       $json['nbVotes'],
       $json['comments'],
       $json['idUser'],
+      $json['username'],
       $json['idChannel']);
   }
 
   public static function DTOArrayToJsonArray($dtoArray) {
     $jsonArray = array();
-    
+
     foreach($dtoArray as $dto)
     {
       array_push($jsonArray, BitweetServerFactory::DTOToJson($dto));

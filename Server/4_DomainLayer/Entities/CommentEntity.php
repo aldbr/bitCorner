@@ -10,13 +10,15 @@ class CommentEntity {
   private $nbVote;
   private $bitweetId;
   private $userId;
+  private $username;
 
-  public function __construct($id, $message, $nbVotes, $bitweetId, $userId) {
+  public function __construct($id, $message, $nbVotes, $bitweetId, $userId, $username) {
     $this->id = $id;
     $this->message = $message;
     $this->nbVotes = $nbVotes;
     $this->bitweetId = $bitweetId;
     $this->userId = $userId;
+    $this->username = $username;
   }
 
   public function getId() {
@@ -62,6 +64,14 @@ class CommentEntity {
 
   public function setUserId($userId) {
     $this->userId = $userId;
+  }
+
+  public function getUsername() {
+    return $this->username;
+  }
+
+  public function setUsername($username) {
+    $this->username = $username;
   }
 
 }

@@ -167,6 +167,7 @@ class BitweetPersistence {
       $record->value('nbVotes'),
       array(),
       $record->value('idUser'),
+      $record->value('bitweetUsername'),
       $record->value('idChannel')
     );
   }
@@ -178,9 +179,10 @@ class BitweetPersistence {
       $commentEntity = new CommentEntity(
         $record->value('idComment'),
         $record->value('commentMessage'),
-        0, //Comments vote not implemented yet      
+        0, //Comments vote not implemented yet
         $record->value('idBitweet'),
-        $record->value('idUser')
+        $record->value('idUser'),
+        $record->value('commentUsername')
       );
 
       $bitweet->addComment($commentEntity);
