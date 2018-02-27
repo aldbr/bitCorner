@@ -69,6 +69,14 @@ class BitweetAppService {
 	}
 	return $bitweetDTOs;
   }
+
+  public function upVote($idBitweet) {
+    $this->bitweetPersistence->upVote($idBitweet);
+  }
+
+  public function downVote($idBitweet) {
+    $this->bitweetPersistence->downVote($idBitweet);
+  }
 }
 
 ?>

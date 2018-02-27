@@ -143,8 +143,18 @@ class BitweetPersistence {
 
   }
 
-  public function updateNbVotes($id) {
+  public function upVote($id) {
+    $query = "MATCH (b:Bitweet)
+              WHERE id(b) = ".$id."
+              SET b.nbVotes = b.nbVotes + 1";
+    $result = Persistence::run($query);
+  }
 
+  public function downVote($id) {
+    $query = "MATCH (b:Bitweet)
+              WHERE id(b) = ".$id."
+              SET b.nbVotes = b.nbVotes - 1";
+    $result = Persistence::run($query);
   }
 
   public function deleteBitweet($id) {

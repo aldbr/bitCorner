@@ -30,6 +30,12 @@ class BitCornerWebService
 				case "getBitweetsFromChannel":
 					return BitweetWebService::getBitweetsFromChannel($params);
 					break;
+				case "upVote":
+					BitweetWebService::upVote($params);
+					break;
+				case "downVote":
+					BitweetWebService::downVote($params);
+					break;
 
 				case "createChannel":
 					ChannelWebService::createChannel($params);
@@ -71,7 +77,7 @@ class BitCornerWebService
 					break;
 			}
 		}
-	}	
+	}
 }
 
 ?>

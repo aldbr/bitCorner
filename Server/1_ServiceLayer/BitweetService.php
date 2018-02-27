@@ -46,6 +46,16 @@ class BitweetService {
   	$bitweetAppService = new BitweetAppService();
     return $this->bitweetAppService->getBitweetsFromChannel($idChannel);
   }
+
+  public function upVote($idBitweet) {
+    $bitweetAppService = new BitweetAppService();
+    $this->bitweetAppService->upVote($idBitweet);
+  }
+
+  public function downVote($idBitweet) {
+    $bitweetAppService = new BitweetAppService();
+    $this->bitweetAppService->downVote($idBitweet);
+  }
 }
 
 ?>

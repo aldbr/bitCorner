@@ -92,6 +92,36 @@ class BitweetWebService
 		}
 	}
 
+	public static function upVote($params)
+	{
+		$bitweetService = new BitweetService();
+		$jsonDecoded = json_decode($params, true);
+
+		if(isset($jsonDecoded['idBitweet']))
+		{
+			$bitweetDTO = $bitweetService->upVote($jsonDecoded['idBitweet']);
+		}
+		else
+		{
+			throw new Exception("Impossible to upvote the bitweet");
+		}
+	}
+
+	public static function downVote($params)
+	{
+		$bitweetService = new BitweetService();
+		$jsonDecoded = json_decode($params, true);
+
+		if(isset($jsonDecoded['idBitweet']))
+		{
+			$bitweetDTO = $bitweetService->downVote($jsonDecoded['idBitweet']);
+		}
+		else
+		{
+			throw new Exception("Impossible to upvote the bitweet");
+		}
+	}
+
 }
 
 
