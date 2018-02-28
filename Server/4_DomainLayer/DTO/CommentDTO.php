@@ -12,7 +12,7 @@ class CommentDTO {
   private $userId;
   private $username;
 
-  public function __construct($id, $message, $nbVotes, $bitweetId, $userId) {
+  public function __construct($id, $message, $nbVotes, $bitweetId, $userId, $username) {
     $this->id = $id;
     $this->message = $message;
     $this->nbVotes = $nbVotes;
