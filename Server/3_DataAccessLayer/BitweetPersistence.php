@@ -146,14 +146,14 @@ class BitweetPersistence {
   public function upVote($id) {
     $query = "MATCH (b:Bitweet)
               WHERE id(b) = ".$id."
-              SET b.nbVotes = b.nbVotes + 1";
+              SET b.nbVotes = toInt(b.nbVotes) + 1";
     $result = Persistence::run($query);
   }
 
   public function downVote($id) {
     $query = "MATCH (b:Bitweet)
               WHERE id(b) = ".$id."
-              SET b.nbVotes = b.nbVotes - 1";
+              SET b.nbVotes = toInt(b.nbVotes) - 1";
     $result = Persistence::run($query);
   }
 
